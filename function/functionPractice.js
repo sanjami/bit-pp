@@ -1,115 +1,119 @@
-        // zbir cifara nekog broja
+// Functions Practical
 
-        function sumOfDigits(n) {
+// zbir cifara nekog broja
 
-        var sum = 0;
-        var lastDigit;
+function sumOfDigits(n) {
 
-        if (typeof n != "number") {
+    var sum = 0;
+    var lastDigit;
+
+    if (typeof n != "number") {
         return -1;
-        }
-        if (n < 0) {
+    }
+    if (n < 0) {
         n = -n;
-        }
+    }
 
-        while (n > 0) {
+    while (n > 0) {
         lastDigit = n % 10;
         n = (n - lastDigit) / 10;
         sum = sum + lastDigit;
-        }
-        return sum;
-        }
+    }
+    return sum;
+}
 
-        console.log(sumOfDigits(986));
-
-
+console.log(sumOfDigits(986));
 
 
-        // zbir prve i poslednje cifre nekog broja.
 
-        function sumOfDigits(n) {
 
-        var sum = 0;
-        var lastDigit;
-        var firstDigit = 0;
+// zbir prve i poslednje cifre nekog broja.
 
-        if (typeof n != "number") {
+function sumOfDigits(n) {
+
+    var sum = 0;
+    var lastDigit;
+    var firstDigit = 0;
+
+    if (typeof n != "number") {
         return -1;
-        }
-        if (n < 0) {
+    }
+    if (n < 0) {
         n = -n;
-        }
+    }
 
-        lastDigit = n % 10;
-        n = (n - lastDigit) / 10;
+    lastDigit = n % 10;
+    n = (n - lastDigit) / 10;
 
-        while (n > 0) {
+    while (n > 0) {
         firstDigit = n % 10;
         n = (n - firstDigit) / 10;
-        }
-        sum = (firstDigit + lastDigit);
-        return sum;
-        }
+    }
+    sum = (firstDigit + lastDigit);
+    return sum;
+}
 
-        console.log(sumOfDigits(5));
+console.log(sumOfDigits(5));
 
-        //zadatak 1 
+//zadatak 1 
 
-        function max(a, b) {
-        if (typeof a != "number" || typeof b != "number") {
+function max(a, b) {
+    if (typeof a != "number" || typeof b != "number") {
         return "Nisi uneo broj";
-        }
-        if (a > b) {
+    }
+    if (a > b) {
         return a;
-        } else
+    } else
         return b;
-        }
-        console.log(max(2, -5));
+}
+console.log(max(2, -5));
 
-        // zadatak 2
+// zadatak 2
 
-        function odd(a) {
-        if (typeof a === "number") {
+function odd(a) {
+    if (typeof a === "number") {
         if (a >= 0) {
             if (a % 2 == 1) {
                 return "Number is odd";
             } return "Number is not odd";
         } return "number is negative";
-        } return "is not a number";
-        }
+    } return "is not a number";
+}
 
-        console.log(odd(0));
+console.log(odd(0));
 
 
-        // zadatak 3
+// zadatak 3
 
-        function digit(a) {
-        if (typeof a === "number") {
+function digit(a) {
+    if (typeof a === "number") {
         if (a > 99 && a < 1000) {
             return "its three digit number";
         } return "Is not three digit number";
-        } return "Is not a number";
-        }
-        console.log(digit(2324));
+    } return "Is not a number";
+}
+console.log(digit(2324));
 
-        // zadatak 4
+// zadatak 4
 
 
-        function arithmetic(a, b, c, d) {
-        var sum;
-        if (typeof a === "number" && typeof b === "number" && typeof c === "number" && typeof d === "number") {
+function arithmetic(a, b, c, d) {
+    var sum;
+    if (typeof a === "number" && typeof b === "number" && typeof c === "number" && typeof d === "number") {
         sum = (a + b + c + d) / 4;
         return sum;
-        } return "One or more values are not a number";
-        }
+    } return "One or more values are not a number";
+}
 
-        console.log(arithmetic(-1, "2", 3, 6));
+console.log(arithmetic(-1, "2", 3, 6));
+
+// zadatak 5
 
 
-        // zadatak 6
+// zadatak 6
 
-        function stars(a, b, c) {
-        if (typeof a === "number" && typeof b === "number" && typeof c === "number") {
+function stars(a, b, c) {
+    if (typeof a === "number" && typeof b === "number" && typeof c === "number") {
         if (a > 0 && b > 0 && c > 0) {
             var string;
             var string1 = "";
@@ -128,15 +132,55 @@
             return string;
         } return "Number is negative";
 
-        } return "One or more values are not a number";
+    } return "One or more values are not a number";
+}
+console.log(stars(3, -7, 5.1));
+
+
+// zadatak 7
+
+function numberOfDigit(n) {
+    var digit = 0;
+    if (typeof n != "number") {
+        return -1;
+    }
+    if (n < 0) {
+        n = -n;
+    }
+
+    while (n > 0) {
+        lastDigit = n % 10;
+        n = (n - lastDigit) / 10;
+        digit = digit + 1;
+    }
+    return digit;
+}
+
+console.log(numberOfDigit('-248h9'));
+ 
+
+// zadatak 8
+
+
+function numberOfElements(n, arr) {
+    var counter = 0;
+    for (i = 0; i < arr.length; i++) {
+        if (n == arr[i]) {
+            counter++;
         }
-        console.log(stars(3, -7, 5.1));
+    }
+    return counter;
+}
 
-        // zadatak 9
+console.log(numberOfElements(2, [1, 2, 6, -3, 2, 2, 8]));
 
-        function sumOfArray(n) {
-        var sum = 0;
-        for (i = 0; i < n.length; i++) {
+
+// zadatak 9
+
+
+function sumOfArray(n) {
+    var sum = 0;
+    for (i = 0; i < n.length; i++) {
         if (typeof n[i] === "number") {
             if (n[i] >= 0) {
                 if (n[i] % 2 == 1) {
@@ -144,28 +188,44 @@
                 }
             }
         }
-        } 
+    }
 
-        return sum;
-        }
+    return sum;
+}
 
-        console.log(sumOfArray([1, 53, '7', -8, -11]));
-
-
+console.log(sumOfArray([1, 53, '7', -8, -11]));
 
 
-        // zadatak 10
-function countLetter (a, str) {
+
+// zadatak 10 finished
+
+
+
+function countLetter(a, str) {
+    var A = 'A';
     var counter = 0;
-    for(i = 0; i<str.length; i++) {
-        if (a == str[i]) {
+    for (i = 0; i < str.length; i++) {
+        if (a == str[i] || A == str[i]) {
             counter++;
-            
+
         }
     }
     return counter;
-} 
+}
 
-console.log(countLetter('a', 'blablabla'));
+console.log(countLetter('a', 'blAblAbl'));
 
+
+// zadatak 11
+
+
+function concat(str, n) {
+    var result = '';
+    for (i = 0; i < n; i++) {
+        result = result + str;
+    }
+    return result;
+}
+
+console.log(concat('abc', 4));
 

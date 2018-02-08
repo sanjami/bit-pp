@@ -1,3 +1,7 @@
+// Functions Practical 2
+
+// Zadatak 1
+
 function isString(input) {
     if (typeof (input) == 'string') {
         return true;
@@ -10,7 +14,7 @@ console.log(isString('My random string'));
 console.log(isString(12));
 
 
-
+// Zadatak 2
 
 function isBlank(input) {
     if (input === " ") {
@@ -26,6 +30,8 @@ console.log(isBlank(" "));
 console.log(isBlank(false));
 
 
+// Zadatak 3
+
 
 function concate(n, string) {
     var result = '';
@@ -35,6 +41,8 @@ function concate(n, string) {
 }
 
 console.log(concate(3, 'Ha'));
+
+// Zadatak 4
 
 
 function countLetter(string, letter) {
@@ -49,6 +57,8 @@ function countLetter(string, letter) {
 
 console.log(countLetter("blablabla", "b"));
 
+// Zadatak 5
+
 
 function positionOfLetter(string, letter) {
     for (i = 0; i < string.length; i++) {
@@ -61,6 +71,8 @@ function positionOfLetter(string, letter) {
 }
 
 console.log(positionOfLetter('vfdjkvfjdk', 's'));
+
+// Zadatak 6
 
 
 function positionOfLetter(string, letter) {
@@ -76,6 +88,10 @@ function positionOfLetter(string, letter) {
 console.log(positionOfLetter('vfdjkvfjdk', 's'));
 
 
+
+// Zadatak 7
+
+
 function convertStringIntoArray(string) {
     var array = [];
     for (i = 0; i < string.length; i++) {
@@ -89,6 +105,10 @@ function convertStringIntoArray(string) {
 }
 
 console.log(convertStringIntoArray('abc'));
+
+
+// Zadatak 8
+
 
 function isNumberPrime(n) {
     if (n > 1) {
@@ -106,6 +126,8 @@ function isNumberPrime(n) {
 
 console.log(isNumberPrime(6));
 
+
+// Zadatak 9
 
 
 function replaceSpaces(string, separator) {
@@ -128,11 +150,26 @@ function replaceSpaces(string, separator) {
 console.log(replaceSpaces('Sanja i Branka'));
 
 
+// Zadatak 10
+
+function getFirstPart(n, str) {
+    var newStr = '';
+    for (i = 0; i < n; i++) {
+        newStr = newStr + str[i];
+    }
+    return newStr + '...'
+}
+console.log(getFirstPart(4, 'gdfhjrjjkkdj78'));
+
+
+// Zadatak 11
+
+
 function convertArrayOfStringtoArrayOfNumber(arrayOfString) {
     var arrayOfNumber = [];
     var position = 0;
     for (i = 0; i < arrayOfString.length; i++) {
-        if (typeof (parseInt(arrayOfString[i])) == 'number'  (parseInt(arrayOfString[i]))!=NaN ) {
+        if (typeof (parseInt(arrayOfString[i])) == 'number' && !isNaN((parseInt(arrayOfString[i])))) {
 
             arrayOfNumber[position] = parseInt(arrayOfString[i]);
             position++;
@@ -145,12 +182,7 @@ console.log(convertArrayOfStringtoArrayOfNumber(['2', 'a', undefined, '4', 192, 
 
 
 
-
-
-
-
-
-
+// Zadatak 12
 
 
 function retirement(yearOfBirth, currentYear, gender) {
@@ -161,24 +193,44 @@ function retirement(yearOfBirth, currentYear, gender) {
         if (years < 65) {
             yearsLeft = 65 - years;
             return yearsLeft;
-        }else {
+        } else {
             return 'You are already retired'
-    
+
         }
-    } 
+    }
     if (gender == 'female') {
         if (years < 60) {
             yearsLeft = 60 - years;
             return yearsLeft;
-        }else {
+        } else {
             return 'You are already retired'
-    
+
         }
-    } 
+    }
 
 }
 
 console.log(retirement(1971, 2018, 'female'));
 
 
+
+// zadatak 13
+
+function humanizeNumber(n) {
+    var humanised = '';
+    if (n % 100 >= 11 && n % 100 <= 13) {
+        humanised = n + 'th'
+    } else if (n % 10 == 1) {
+        humanised = n + 'st';
+    } else if (n % 10 == 2) {
+        humanised = n + 'nd';
+    } else if (n % 10 == 3) {
+        humanised = n + 'rd';
+    } else {
+        humanised = n + 'th';
+    }
+    return humanised;
+}
+
+console.log(humanizeNumber(240));
 
