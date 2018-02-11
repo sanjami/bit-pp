@@ -1,5 +1,4 @@
 // Functions Practical
-
 // zbir cifara nekog broja
 
 function sumOfDigits(n) {
@@ -55,7 +54,9 @@ function sumOfDigits(n) {
 
 console.log(sumOfDigits(5));
 
-//zadatak 1 
+
+//zadatak 1 Write a function that calculates the maximum of two given numbers. 
+
 
 function max(a, b) {
     if (typeof a != "number" || typeof b != "number") {
@@ -68,7 +69,9 @@ function max(a, b) {
 }
 console.log(max(2, -5));
 
-// zadatak 2
+
+// zadatak 2 Write a function that checks if a given number is odd.
+
 
 function odd(a) {
     if (typeof a === "number") {
@@ -83,7 +86,8 @@ function odd(a) {
 console.log(odd(0));
 
 
-// zadatak 3
+// zadatak 3 Write a function that checks if a given number is a three digit long number
+
 
 function digit(a) {
     if (typeof a === "number") {
@@ -94,7 +98,8 @@ function digit(a) {
 }
 console.log(digit(2324));
 
-// zadatak 4
+
+// zadatak 4 Write a function that calculates an arithmetic mean of four numbers.
 
 
 function arithmetic(a, b, c, d) {
@@ -107,10 +112,46 @@ function arithmetic(a, b, c, d) {
 
 console.log(arithmetic(-1, "2", 3, 6));
 
-// zadatak 5
+
+/* zadatak 5
+Write a function that draws a square of a given size. For example,  if the size of square is 5 the function should draw: 
+*****
+*    *
+*    *
+*    *
+*****
+*/
 
 
-// zadatak 6
+function drowSquare (n) {
+    for (r = 0; r < n; r++) {
+        if (r == 0 || r == n - 1) {
+            var row = '';
+            for (i = 0; i < n; i++) {
+                row = row + '*';
+            }
+            console.log(row);
+        } else {
+            var rows = '';
+            for (i = 0; i < n - 2; i++) {
+                rows = rows + ' ';
+            }
+            rows = '*' + rows + '*';
+            console.log(rows);
+        }
+    }
+}
+
+drowSquare(4);
+
+
+/* zadatak 6
+Write a function that draws a horizontal chart representing three given values. For example, if values are 5, 3, and 7, the function should draw:
+* * * * *
+* * *
+* * * * * * *
+*/
+
 
 function stars(a, b, c) {
     if (typeof a === "number" && typeof b === "number" && typeof c === "number") {
@@ -137,7 +178,8 @@ function stars(a, b, c) {
 console.log(stars(3, -7, 5.1));
 
 
-// zadatak 7
+// zadatak 7 Write a function that calculates a number of digits of a given number. 
+
 
 function numberOfDigit(n) {
     var digit = 0;
@@ -157,9 +199,9 @@ function numberOfDigit(n) {
 }
 
 console.log(numberOfDigit('-248h9'));
- 
 
-// zadatak 8
+
+// zadatak 8 Write a function that calculates a number of appearances of a given number in a given array.
 
 
 function numberOfElements(n, arr) {
@@ -175,7 +217,7 @@ function numberOfElements(n, arr) {
 console.log(numberOfElements(2, [1, 2, 6, -3, 2, 2, 8]));
 
 
-// zadatak 9
+// zadatak 9 Write a function that calculates the sum of odd elements of a given array. 
 
 
 function sumOfArray(n) {
@@ -196,9 +238,7 @@ function sumOfArray(n) {
 console.log(sumOfArray([1, 53, '7', -8, -11]));
 
 
-
-// zadatak 10 finished
-
+// zadatak 10 Write a function that calculates the number of appearances of a letter a in a given string. Modify the function so it calculates the number of both letters a and A.
 
 
 function countLetter(a, str) {
@@ -216,7 +256,7 @@ function countLetter(a, str) {
 console.log(countLetter('a', 'blAblAbl'));
 
 
-// zadatak 11
+// zadatak 11 Write a function that concatenates a given string given number of times. For example, if “abc” and 4 are given values, the function prints out abcabcabcabc. 
 
 
 function concat(str, n) {
@@ -228,4 +268,4 @@ function concat(str, n) {
 }
 
 console.log(concat('abc', 4));
-
+ 
