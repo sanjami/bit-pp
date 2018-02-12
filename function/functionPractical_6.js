@@ -99,60 +99,154 @@ console.log(arrayOfDigits(2345));
 // Write a program that prints a multiplication table for numbers up to 12.
 
 var tableOfMultiplication = function (n) {
-    var a = [];
-    var b = [];
+    var a = '';
+    var b;
     var i;
     var j;
-    var x = 1;
-    var y = 1;
-    for (i = 0; i <= n; i++) {
-        for (j = 0; j <= n; j++) {
-            b[j] = x*y;
-            y++
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            a += i * j + '  ';
         }
-        y = 1;
-        a[i] = b;
-        x++;
+        a += '\n';
     }
     return a;
-
 }
 
 console.log(tableOfMultiplication(12));
 
-Write a function to input temperature in Centigrade and convert to Fahrenheit.
+// Write a function to input temperature in Centigrade and convert to Fahrenheit.
+
+var temperature = function (t) {
+    var fTemperature = t * 9 / 5 + 32;
+    return fTemperature;
+}
+
+console.log(temperature(-50));
+
+
+// Write a function to find the maximum element in array of numbers.Filter out all non - number elements.
 
 
 
-Write a function to find the maximum element in array of numbers.Filter out all non - number elements.
+//Write a function to find the maximum and minimum elements.Function returns an array.
+
+var minAndMax = function (a) {
+    var min = a[0];
+    var max = a[0];
+    for (i = 0; i < a.length; i++) {
+        if (a[i] < min) {
+            min = a[i];
+        }
+        if (a[i] > max) {
+            max = a[i];
+        }
+    }
+    var c = [];
+    c[0] = min;
+    c[1] = max;
+    return c;
+}
+
+console.log(minAndMax([1, 3, 5, 7, -7, 8, 45]));
+
+
+// Write a function to find the median element of array.
+
+var median = function (arr) {
+    var med;
+    if (arr.length % 2 == 0) {
+        med = arr[arr.length / 2 - 1] + ',' + arr[arr.length / 2];
+    } else {
+        med = arr[parseInt(arr.length / 2)];
+    }
+    return med;
+}
+
+console.log(median([1, 2, 8, 10, 47, -8, 4, 5, 6, 7]));
 
 
 
-Write a function to find the maximum and minimum elements.Function returns an array.
+//Write a function to find the element that occurs most frequently.
+
+var br = [1, 3, 7, 3];
+var result = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+for (i = 0; i < br.length; i++) {
+    result[br[i]]++;
+}
+console.log(result);
+
+
+/*Write a function to find and return the first, middle and last element of an array if the array has odd number of elements.If number of elements is even, return just the first and the last.In other cases, input array should be returned.
+*/
+
+var elementOfArray = function (arr) {
+    var elements;
+    if (arr.length % 2 != 0) {
+        elements = arr[0] + ',' + arr[parseInt(arr.length / 2)] + ',' + arr[arr.length - 1];
+    } else if (arr.length % 2 == 0) {
+        elements = arr[0] + ',' + arr[arr.length - 1];
+    } else elements = arr;
+    return elements;
+}
+
+console.log(elementOfArray([4, 2, -5, 7, 9, 10]));
 
 
 
-Write a function to find the median element of array.
+/*Write a function to find the average of N elements.Make the function flexible to receive dynamic number or parameters.
+*/
+
+var average = function (arr) {
+    var sum = 0;
+    var aver;
+    var i;
+    for (i = 0; i < arr.length; i++) {
+        sum = sum + arr[i];
+    }
+    aver = sum / arr.length;
+    return aver;
+}
+
+console.log(average([1, 5, 7, 9]));
+
+/*var average = function(n1, n2, n3) {
+    var n1 = n1 || 0;
+    var n2 = n2 || 0;
+    var n3 = n3 || 0;
+    var aver = (n1+n2+n3)/3
+    ;
+    return aver;
+}
+console.log(average(1, 5, 7));
+*/
 
 
+// Write a function to find all the numbers greater than the average.
 
-Write a function to find the element that occurs most frequently.
+var average = function (arr) {
+    var sum = 0;
+    var aver;
+    var i;
+    var j = 0;
+    var b = [];
+    for (i = 0; i < arr.length; i++) {
+        sum = sum + arr[i];
+    }
+    aver = sum / arr.length;
+
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i] > aver) {
+            b[j] = arr[i];
+            j++;
+        }
+    }
+    return b;
+}
+
+console.log(average([1, 6, 8, 7, 1, 5, 8]));
 
 
-
-Write a function to find and return the first, middle and last element of an array if the array has odd number of elements.If number of elements is even, return just the first and the last.In other cases, input array should be returned.
-
-
-
-Write a function to find the average of N elements.Make the function flexible to receive dynamic number or parameters.
-
-
-
-Write a function to find all the numbers greater than the average.
-
-
-
-The body mass index(BMI) is the ratio of the weight of a person(in kilograms) to the square of the height(in meters).Write a function that takes two parameters, weight and height, computes the BMI, and prints the corresponding BMI category:
+/*The body mass index(BMI) is the ratio of the weight of a person(in kilograms) to the square of the height(in meters).Write a function that takes two parameters, weight and height, computes the BMI, and prints the corresponding BMI category:
 Starvation: less than 15
 Anorexic: less than 17.5
 Underweight: less than 18.5
@@ -160,11 +254,34 @@ Ideal: greater than or equal to 18.5 but less than 25
 Overweight: greater than or equal to 25 but less than 30
 Obese: greater than or equal to 30 but less than 40
 Morbidly obese: greater than or equal to 40
+*/
+var bmi = function (weight, height) {
+    var index;
+    var category;
+    index = weight / (height * height);
+    console.log(index);
+    if (index < 15) {
+        category = "Starvation;"
+    } else if (index < 17.5) {
+        category = "Anorexic";
+    } else if (index < 18.5) {
+        category = "Undarweight";
+    } else if (18.5 <= index && index < 25) {
+        category = "Ideal";
+    } else if (25 <= index && index < 30) {
+        category = "Overweight";
+    } else if (30 <= index && index < 40) {
+        category = "Obese";
+    } else if (index >= 40) {
+        category = "Morbidly";
+    }
+    return category;
+}
+console.log(bmi(76, 1.63));
 
 
 
-
-Write a function that takes a list of strings and prints them, one per line, in a rectangular frame.:
+/*Write a function that takes a list of strings and prints them, one per line, in a rectangular frame.:
 
 For example the list["Hello", "World", "in", "a", "frame"] gets printed as:
 *********
@@ -174,6 +291,17 @@ For example the list["Hello", "World", "in", "a", "frame"] gets printed as:
 * a *
 * frame *
 *********
+*/
 
-
+/*var print = function (arr) {
+    var result = "";
+    var row;
+    for (i = 0; i < arr.length; i++){
+        row = "*" + arr[i] + "*";
+        result = result + row + '\n';
+    }
+    return result;
+}
+console.log(print (["ghgjhgjh", "hbb", "njnjnjjn", "01kg", "bla"]));
+*/
 
