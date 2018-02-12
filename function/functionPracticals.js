@@ -123,26 +123,33 @@ Write a function that draws a square of a given size. For example,  if the size 
 */
 
 
-function drowSquare (n) {
+function drawSquare (n) {
+    var a = [];
     for (r = 0; r < n; r++) {
         if (r == 0 || r == n - 1) {
             var row = '';
             for (i = 0; i < n; i++) {
                 row = row + '*';
             }
-            console.log(row);
+            a[r] = row;
         } else {
             var rows = '';
             for (i = 0; i < n - 2; i++) {
                 rows = rows + ' ';
             }
             rows = '*' + rows + '*';
-            console.log(rows);
+            a[r] = rows;
         }
     }
+    return a;
 }
 
-drowSquare(4);
+var square = drawSquare(5);
+
+for(i = 0; i < square.length; i++) {
+    console.log(square[i]+'\n');
+}
+
 
 
 /* zadatak 6
