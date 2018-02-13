@@ -2,9 +2,10 @@
 Input:  e = 3, a = [5, -4.2, 3, 7]
 Output: yes
 */
+"use strict"
 
 function isInArray (e, a) {
-    for (i = 0; i < a.length; i++) {
+    for (var i = 0; i < a.length; i++) {
         if (a[i] == e) {
             return 'yes'
         }
@@ -22,7 +23,7 @@ Output array: [-3, 22, 10, 6.8, -8]
 
 
 function multiple (arr) {
-    for (i = 0; i < arr.length; i++ ) {
+    for (var i = 0; i < arr.length; i++ ) {
         if(arr[i] > 0) {
             arr[i]= arr[i]*2;
         }
@@ -40,7 +41,7 @@ Output: -1, 3
 function printMinimum (a) {
     var position;
     var min = a[0];
-    for (i = 0; i < a.length; i++) {
+    for (var i = 0; i < a.length; i++) {
         if (a[i] < min) {
             min = a[i];
             position = i;
@@ -62,7 +63,7 @@ Output: 2
 function minimum(arr) {
     var m = arr[0];
     var position = 0;
-    for (i =0; i < arr.length; i++) {
+    for (var i =0; i < arr.length; i++) {
         if (m > arr[i]) {
             m = arr[i];
             position = i;
@@ -86,7 +87,7 @@ Output: 16
 
 function sumOfPositive (a) {
     var sum = 0;
-    for (i = 0; i < a.length; i++){
+    for (var i = 0; i < a.length; i++){
         if(a[i] > 0) {
             sum += a[i];
         }
@@ -109,7 +110,7 @@ Input array: [3, 4, 12, 8]
 function symmetric(arr) {
     var n = arr.length;
     var counter = 0;
-for ( i = 0; i < parseInt(n/2); i++ ) {
+for (var i = 0; i < parseInt(n/2); i++ ) {
         if (arr[i] == arr[n-1-i]) {
             counter += 1;
         }
@@ -223,9 +224,9 @@ Input: e = 2, a = [4, 6, 2, 8, 2, 2]
 */
 
 function deleting (e, a) {
-    for (i = 0; i < a.length; i++) {
+    for (var i = 0; i < a.length; i++) {
         if (a[i] == e) {
-            position = i;
+            var position = i;
             delete a[i];
         }
     }

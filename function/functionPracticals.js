@@ -1,5 +1,6 @@
 // Functions Practical
 // zbir cifara nekog broja
+"use strict"
 
 function sumOfDigits(n) {
 
@@ -125,7 +126,7 @@ Write a function that draws a square of a given size. For example,  if the size 
 
 function drawSquare (n) {
     var a = [];
-    for (r = 0; r < n; r++) {
+    for (var r = 0; r < n; r++) {
         if (r == 0 || r == n - 1) {
             var row = '';
             for (i = 0; i < n; i++) {
@@ -134,7 +135,7 @@ function drawSquare (n) {
             a[r] = row;
         } else {
             var rows = '';
-            for (i = 0; i < n - 2; i++) {
+            for (var i = 0; i < n - 2; i++) {
                 rows = rows + ' ';
             }
             rows = '*' + rows + '*';
@@ -146,7 +147,7 @@ function drawSquare (n) {
 
 var square = drawSquare(5);
 
-for(i = 0; i < square.length; i++) {
+for(var i = 0; i < square.length; i++) {
     console.log(square[i]+'\n');
 }
 
@@ -165,6 +166,7 @@ function stars(a, b, c) {
         if (a > 0 && b > 0 && c > 0) {
             var string;
             var string1 = "";
+            var i;
             for (i = 0; i < a; i++) {
                 string1 += "*";
             }
@@ -213,6 +215,7 @@ console.log(numberOfDigit('-248h9'));
 
 function numberOfElements(n, arr) {
     var counter = 0;
+    var i;
     for (i = 0; i < arr.length; i++) {
         if (n == arr[i]) {
             counter++;
@@ -229,6 +232,7 @@ console.log(numberOfElements(2, [1, 2, 6, -3, 2, 2, 8]));
 
 function sumOfArray(n) {
     var sum = 0;
+    var i;
     for (i = 0; i < n.length; i++) {
         if (typeof n[i] === "number") {
             if (n[i] >= 0) {
@@ -251,6 +255,7 @@ console.log(sumOfArray([1, 53, '7', -8, -11]));
 function countLetter(a, str) {
     var A = 'A';
     var counter = 0;
+    var i;
     for (i = 0; i < str.length; i++) {
         if (a == str[i] || A == str[i]) {
             counter++;
@@ -268,6 +273,7 @@ console.log(countLetter('a', 'blAblAbl'));
 
 function concat(str, n) {
     var result = '';
+    var i;
     for (i = 0; i < n; i++) {
         result = result + str;
     }

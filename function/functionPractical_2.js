@@ -5,6 +5,7 @@
 "My random string" -> true
 12 -> false
 */
+"use strict"
 
 function isString(input) {
     if (typeof (input) == 'string') {
@@ -50,7 +51,7 @@ Write a function that concatenates a given string n times (default is 1).
 
 function concate(n, string) {
     var result = '';
-    for (i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
         result = result + string;
     } return result;
 }
@@ -64,7 +65,7 @@ Write a function to count the number of letter occurrences in a string.
 
 function countLetter(string, letter) {
     var counter = 0;
-    for (i = 0; i < string.length; i++) {
+    for (var i = 0; i < string.length; i++) {
         if (letter == string[i]) {
             counter += 1;
         }
@@ -80,7 +81,7 @@ Write a function to find the position of the first occurrence of a character in 
 */
 
 function positionOfLetter(string, letter) {
-    for (i = 0; i < string.length; i++) {
+    for (var i = 0; i < string.length; i++) {
         if (letter == string[i]) {
             return i + 1;
 
@@ -96,7 +97,7 @@ Write a function to find the position of the last occurrence of a character in a
 */
 
 function positionOfLetter(string, letter) {
-    for (i = string.length; i > 0; i--) {
+    for (var i = string.length; i > 0; i--) {
         if (letter == string[i]) {
             return i + 1;
 
@@ -115,7 +116,7 @@ Write a function to convert string into an array. Space in a string should be re
 
 function convertStringIntoArray(string) {
     var array = [];
-    for (i = 0; i < string.length; i++) {
+    for (var i = 0; i < string.length; i++) {
         if (string[i] == " ") {
             array[i] = null;
         } else {
@@ -135,7 +136,7 @@ Note: A prime number (or a prime) is a natural number greater than 1 that has no
 
 function isNumberPrime(n) {
     if (n > 1) {
-        for (i = 2; i < n - 1; i++) {
+        for (var i = 2; i < n - 1; i++) {
             if (n % i == 0) {
                 return 'Number is not prime';
                 break;
@@ -162,9 +163,9 @@ function replaceSpaces(string, separator) {
     if (separator == undefined) {
         separator = '-'
     }
-    string1 = '';
+    var string1 = '';
 
-    for (i = 0; i < string.length; i++) {
+    for (var i = 0; i < string.length; i++) {
         if (string[i] == ' ') {
             string1 += separator;
         } else {
@@ -184,7 +185,7 @@ Write a function to get the first n characters and add “...” at the end of n
 
 function getFirstPart(n, str) {
     var newStr = '';
-    for (i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
         newStr = newStr + str[i];
     }
     return newStr + '...'
@@ -200,7 +201,7 @@ Write a function that converts an array of strings into an array of numbers. Fil
 function convertArrayOfStringtoArrayOfNumber(arrayOfString) {
     var arrayOfNumber = [];
     var position = 0;
-    for (i = 0; i < arrayOfString.length; i++) {
+    for (var i = 0; i < arrayOfString.length; i++) {
         if (typeof (parseInt(arrayOfString[i])) == 'number' && !isNaN((parseInt(arrayOfString[i])))) {
 
             arrayOfNumber[position] = parseInt(arrayOfString[i]);
