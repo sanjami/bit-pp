@@ -265,7 +265,7 @@ var bmi = function (weight, height) {
     } else if (index < 17.5) {
         category = "Anorexic";
     } else if (index < 18.5) {
-        category = "Undarweight";
+        category = "Underweight";
     } else if (18.5 <= index && index < 25) {
         category = "Ideal";
     } else if (25 <= index && index < 30) {
@@ -293,15 +293,34 @@ For example the list["Hello", "World", "in", "a", "frame"] gets printed as:
 *********
 */
 
-/*var print = function (arr) {
+var print = function (arr) {
+    var maxStringLength = 0;
+    var space = "";
+    var stringCounter;
+    var star = "";
+    for (var n = 0; n < arr.length; n++) {
+        if (maxStringLength < arr[n].length) {
+            maxStringLength = arr[n].length;
+        }
+    }
+    for (var k = 0; k < maxStringLength+2; k++) {
+        star = star + '*';
+    }
     var result = "";
     var row;
-    for (i = 0; i < arr.length; i++){
-        row = "*" + arr[i] + "*";
+    for (i = 0; i < arr.length; i++) {
+        stringCounter = arr[i].length;
+        space = "";
+        for (j = 0; j < (maxStringLength - stringCounter); j++) {
+            space = space + " ";
+        }
+
+        row = "*" + arr[i] + space + "*";
         result = result + row + '\n';
     }
-    return result;
+    return star + '\n' + result  + star;
 }
-console.log(print (["ghgjhgjh", "hbb", "njnjnjjn", "01kg", "bla"]));
-*/
+
+console.log(print([" ghgjhgjh ", " hbb ", " njnjnjj ", " 01kg ", " bla "]));
+
 
