@@ -14,10 +14,10 @@ function totalPrice (bank_balance) {
             amount = amount + (accessory_price + accessory_price*tax_rate);
         }
     } 
-    if (amount > bank_balance) {
-        return "Amount is: " + amount + " You don't have enough monay on your bank acount.";
-    } else {
-    return amount;
+        if (amount > bank_balance) {
+           return "Amount is: " + amount + " You don't have enough monay on your bank acount.";
+         } else {
+      return amount;
     }
 }
 

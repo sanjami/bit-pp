@@ -153,9 +153,17 @@ console.log(minAndMax([1, 3, 5, 7, -7, 8, 45]));
 // Write a function to find the median element of array.
 
 var median = function (arr) {
+    for(i =0; i< arr.length; i++){
+        for (j = i+1; j < arr.length; j++) {
+            if(arr[i] > arr [j] ){
+
+            }
+        }
+    }
+    console.log(newArr);
     var med;
     if (arr.length % 2 == 0) {
-        med = arr[arr.length / 2 - 1] + ',' + arr[arr.length / 2];
+        med = (arr[arr.length / 2 - 1] + arr[arr.length / 2])/2;
     } else {
         med = arr[parseInt(arr.length / 2)];
     }
@@ -175,7 +183,13 @@ for (i = 0; i < br.length; i++) {
 }
 console.log(result);
 
-
+var counter = [];
+var i;
+ var j;
+ var frequent = function (arr) {
+     for(i = 0; i < arr.length; i++)
+        for (var j=0; j = arr.length; j++)
+ }
 /*Write a function to find and return the first, middle and last element of an array if the array has odd number of elements.If number of elements is even, return just the first and the last.In other cases, input array should be returned.
 */
 
