@@ -215,13 +215,16 @@ var frequent = function (arr) {
     }
     console.log(arr);
     for (i = 0; i < arr.length; i++){
+        counter = 1;
         for (var j = i+1; j < arr.length; j++) {
             if (arr[i] == arr[j]){
-                counter++              
+                counter++;
+                result[j]= 0;              
             }            
         }
-        result[i] = counter;
-        counter = 1;
+        if(result[i] != 0){
+            result[i] = counter;
+        }      
     }
          return result;
     }
