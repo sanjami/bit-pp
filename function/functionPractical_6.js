@@ -152,7 +152,7 @@ console.log(minAndMax([1, 3, 5, 7, -7, 8, 45]));
 
 // Write a function to find the median element of array.
 
-var median = function (arr) {
+/*var median = function (arr) {
     var med;
     if (arr.length % 2 == 0) {
         med = arr[arr.length / 2 - 1] + ',' + arr[arr.length / 2];
@@ -164,7 +164,7 @@ var median = function (arr) {
 
 console.log(median([1, 2, 8, 10, 47, -8, 4, 5, 6, 7]));
 
-
+*/
 
 //Write a function to find the element that occurs most frequently.
 
