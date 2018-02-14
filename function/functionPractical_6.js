@@ -82,6 +82,7 @@ console.log(rotate([1, 2, 3, 4, 5, 6], 2));
 
 
 /* Write a function that takes a number and returns array of its digits. */
+
 var arrayOfDigits = function (a) {
     var b = '';
     b += a;
@@ -126,6 +127,21 @@ console.log(temperature(-50));
 
 // Write a function to find the maximum element in array of numbers.Filter out all non - number elements.
 
+function findMax(arr) {
+    var max = arr[0];
+    for (var i = 0; i < arr.length; i++) {
+        if (typeof arr[i] != 'number') {
+            delete arr[i]
+        } else {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+    }
+    return max;
+}
+
+console.log(findMax([1, 7, -8, 'a', NaN, undefined, 5]));
 
 
 //Write a function to find the maximum and minimum elements.Function returns an array.
@@ -141,10 +157,7 @@ var minAndMax = function (a) {
             max = a[i];
         }
     }
-    var c = [];
-    c[0] = min;
-    c[1] = max;
-    return c;
+    return [min, max];
 }
 
 console.log(minAndMax([1, 3, 5, 7, -7, 8, 45]));
@@ -152,46 +165,70 @@ console.log(minAndMax([1, 3, 5, 7, -7, 8, 45]));
 
 // Write a function to find the median element of array.
 
-var median = function (arr) {
-    for(i =0; i< arr.length; i++){
-        for (j = i+1; j < arr.length; j++) {
-            if(arr[i] > arr [j] ){
-
+var sortArr = function (arr) {
+    for (i = 0; i < arr.length; i++) {
+        for (j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
         }
     }
-    console.log(newArr);
-
-/*var median = function (arr) {
     var med;
     if (arr.length % 2 == 0) {
-        med = (arr[arr.length / 2 - 1] + arr[arr.length / 2])/2;
+        med = (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2;
     } else {
         med = arr[parseInt(arr.length / 2)];
     }
     return med;
 }
 
-console.log(median([1, 2, 8, 10, 47, -8, 4, 5, 6, 7]));
+console.log(sortArr([1, 2, 8, 10, 47, -8, 4, 5, 6, 7]));
 
-*/
 
 //Write a function to find the element that occurs most frequently.
 
+/*
 var br = [1, 3, 7, 3];
 var result = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 for (i = 0; i < br.length; i++) {
     result[br[i]]++;
 }
 console.log(result);
+*/
 
-var counter = [];
-var i;
- var j;
- var frequent = function (arr) {
-     for(i = 0; i < arr.length; i++)
-        for (var j=0; j = arr.length; j++)
- }
+
+var frequent = function (arr) {
+    var counter = 1;
+    var result = [];
+    var i;
+    var j;
+    for (i = 0; i < arr.length; i++) {
+        for (j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    console.log(arr);
+    for (i = 0; i < arr.length; i++){
+        for (var j = i+1; j < arr.length; j++) {
+            if (arr[i] == arr[j]){
+                counter++              
+            }            
+        }
+        result[i] = counter;
+        counter = 1;
+    }
+         return result;
+    }
+
+ console.log(frequent([1, 5, 1, 1, 7, 8, 7, 5]));
+ 
+
 
 /*Write a function to find and return the first, middle and last element of an array if the array has odd number of elements.If number of elements is even, return just the first and the last.In other cases, input array should be returned.
 */
@@ -206,36 +243,26 @@ var elementOfArray = function (arr) {
     return elements;
 }
 
-console.log(elementOfArray([4, 2, -5, 7, 9, 10]));
+console.log(elementOfArray([4, 2, -5, 1, 7, 9, 10]));
 
 
 
 /*Write a function to find the average of N elements.Make the function flexible to receive dynamic number or parameters.
 */
 
-var average = function (arr) {
+var average = function () {
+    console.log(arguments);
     var sum = 0;
     var aver;
     var i;
-    for (i = 0; i < arr.length; i++) {
-        sum = sum + arr[i];
+    for (i = 0; i < arguments.length; i++) {
+        sum = sum + arguments[i];
     }
-    aver = sum / arr.length;
+    aver = sum / arguments.length;
     return aver;
 }
 
-console.log(average([1, 5, 7, 9]));
-
-/*var average = function(n1, n2, n3) {
-    var n1 = n1 || 0;
-    var n2 = n2 || 0;
-    var n3 = n3 || 0;
-    var aver = (n1+n2+n3)/3
-    ;
-    return aver;
-}
-console.log(average(1, 5, 7));
-*/
+console.log(average(1, 7, 8, 2));
 
 
 // Write a function to find all the numbers greater than the average.
@@ -320,7 +347,7 @@ var print = function (arr) {
             maxStringLength = arr[n].length;
         }
     }
-    for (var k = 0; k < maxStringLength+2; k++) {
+    for (var k = 0; k < maxStringLength + 2; k++) {
         star = star + '*';
     }
     var result = "";
@@ -335,7 +362,7 @@ var print = function (arr) {
         row = "*" + arr[i] + space + "*";
         result = result + row + '\n';
     }
-    return star + '\n' + result  + star;
+    return star + '\n' + result + star;
 }
 
 console.log(print([" ghgjhgjh ", " hbb ", " njnjnjj ", " 01kg ", " bla "]));
