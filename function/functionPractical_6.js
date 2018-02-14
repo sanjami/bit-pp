@@ -161,6 +161,8 @@ var median = function (arr) {
         }
     }
     console.log(newArr);
+
+/*var median = function (arr) {
     var med;
     if (arr.length % 2 == 0) {
         med = (arr[arr.length / 2 - 1] + arr[arr.length / 2])/2;
@@ -172,7 +174,7 @@ var median = function (arr) {
 
 console.log(median([1, 2, 8, 10, 47, -8, 4, 5, 6, 7]));
 
-
+*/
 
 //Write a function to find the element that occurs most frequently.
 
@@ -190,6 +192,7 @@ var i;
      for(i = 0; i < arr.length; i++)
         for (var j=0; j = arr.length; j++)
  }
+
 /*Write a function to find and return the first, middle and last element of an array if the array has odd number of elements.If number of elements is even, return just the first and the last.In other cases, input array should be returned.
 */
 
@@ -336,5 +339,3 @@ var print = function (arr) {
 }
 
 console.log(print([" ghgjhgjh ", " hbb ", " njnjnjj ", " 01kg ", " bla "]));
-
-
