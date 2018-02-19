@@ -58,13 +58,11 @@ function checkPassword(password, a, b) {
 
     for (var i = 0; i < password.length; i++) {
         var d = parseInt(password[i]);
-        console.log(d);
-        console.log(d!=NaN);
-        if (d == NaN) {
-            console.log(a());
-            break;
-        }
+        if (!isNaN(d)) {
+            return console.log(a());
+        }    
     }
+    console.log(b());
 }
 
 checkPassword('abcde', passwordValid, passwordError);
