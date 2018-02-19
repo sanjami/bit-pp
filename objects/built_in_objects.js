@@ -113,6 +113,17 @@ console.log(hideEmail('sanjam23@gmail.com'));
 //        var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 //        var LOWER = 'abcdefghijklmnopqrstuvwxyz';
 
+function swap (str) {
+    var newArr = [];
+    for(i = 0; i < str.length; i++){
+        if(str[i] === str[i].toUpperCase()){
+            newArr.push(str[i].toLowerCase());
+        } else {
+            newArr.push(str[i].toUpperCase());
+        }
 
+    }
+    return newArr.join('');
+}
  
-
+console.log(swap('The Quick Brown Fox'));
