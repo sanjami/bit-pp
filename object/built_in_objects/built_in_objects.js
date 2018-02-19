@@ -1,4 +1,4 @@
-// Write a function to convert a number from one base (radix) to another. 
+//1. Write a function to convert a number from one base (radix) to another. 
 // Hint: Use one of the built-in functions and toString method of one of the built-in Object Wrappers;
 
 function convert(x) {
@@ -15,7 +15,7 @@ console.log(convert(25));
 
 
 
-// Write a JavaScript function that reverses a number.
+//2. Write a JavaScript function that reverses a number.
 
 
 function reverseNumber(x) {
@@ -35,7 +35,7 @@ console.log(reverseNumber(985746));
 
 
 
-// Write a JavaScript function that returns a passed string with letters in alphabetical order. 
+//3. Write a JavaScript function that returns a passed string with letters in alphabetical order. 
 // Note: Assume punctuation, numbers and symbols are not included in the passed string.
 
 function pass(str) {
@@ -56,38 +56,42 @@ console.log(pass('urhtfoln'));
 
 
 
-// Write a function to alphabetize words of a given string. 
+//4. Write a function to alphabetize words of a given string. 
 // Alphabetizing a string means rearranging the letters so they are sorted from A to Z.
 
-function alpha(a) {
-
+function rearranging(str) {
+    var arr;
+    var arrSort = [];
+    var newStr;
+    arr = str.split(" ");
+    for(var i = 0; i<arr.length; i++) {
+        arrSort[i]=arr[i].sort();
+    }
+   newStr= arrSort.join();
+   return newStr;
 }
 
-s = 'I am hero'
+console.log(rearranging("my random string"));
 
-s.indexOf()
-
-
-
-// Write a function to split a string and convert it into an array of words.
+//5. Write a function to split a string and convert it into an array of words.
 
 
 
-// Write a function to convert a string to its abbreviated form.
+//6. Write a function to convert a string to its abbreviated form.
 
 
 
-// Write a function that can pad (left, right) a string to get to a determined length.
+//7. Write a function that can pad (left, right) a string to get to a determined length.
 
 
 
-// Write a function to capitalize the first letter of a string.
+//8. Write a function to capitalize the first letter of a string.
  
 
-// Write a function to hide email addresses to protect them from unauthorized users.
+//9. Write a function to hide email addresses to protect them from unauthorized users.
   
 
-// Write a program that accepts a string as input and swaps the case of each character. For example, if you input 'The Quick Brown Fox', the output should be 'tHE qUICK bROWN fOX'.
+//10. Write a program that accepts a string as input and swaps the case of each character. For example, if you input 'The Quick Brown Fox', the output should be 'tHE qUICK bROWN fOX'.
 //        var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 //        var LOWER = 'abcdefghijklmnopqrstuvwxyz';
  
