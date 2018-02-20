@@ -214,12 +214,22 @@ function Products (name, price) {
 
 var myProducts = [];
 
+var myProduct1 = new Products('apple', 100);
+myProducts.push(myProduct1);
+var myProduct2 = new Products('milk', 80);
+myProducts.push(myProduct2);
+var myProduct3 = new Products('bananas', 150);
+myProducts.push(myProduct3);
+
 console.log(myProducts);
 
 //6b. Write a function that calculates the total price of your shopping list. 
 
 function price(array) {
-    var total = array[0].price + array[1].price+ array[2].price;
+    var total = 0;
+    for (var i = 0; i < array.length; i++) {
+        total = total + array[i].price;
+    }
     return total;
 }
 console.log(price(myProducts));
@@ -227,12 +237,16 @@ console.log(price(myProducts));
 //6c. Write a function that calculates the average product price of your shopping list. Print this value with the precision of three decimals. 
 
 function averagePrice(array) {
-    var average = (array[0].price + array[1].price+ array[2].price)/3;
-    return average.toFixed(3);
+    var average = 0;
+    for (var i = 0; i < array.length; i++) {
+        average = average + array[i].price;
+    }
+    return (average/i).toFixed(3);
 }
 console.log(averagePrice(myProducts));
 
 //6d. Write a function that prints out the name of the most expensive product on your shopping list. Write it in uppercase. 
+
 function Products (name, price) {
     this.name = name;
     this.price = price;
@@ -247,27 +261,18 @@ myProducts.push(myProduct2);
 var myProduct3 = new Products('bananas', 150);
 myProducts.push(myProduct3);
 
-console.log(myProducts);
-
-function sortNumbers(a, b) {
-    return a-b;
-}
-
 function mostExpensive(array) {
-    var prices  = [];
-    prices.push(array[0].price);
-    prices.push(array[1].price);
-    prices.push(array[2].price);
-    console.log(prices);
-    
-    var sortArr = prices.sort(sortNumbers);
-    console.log(sortArr);
-    var maxPrice = sortArr[2];
-    var index = array.indexOf(maxPrice);
-    console.log(index);
-    return array[index].name;
-    
+    var maxPrice = array[0].price;
+    var product = array[0].name;
+    for(var i = 0; i < array.length; i++) {
+        if(maxPrice < array[i].price) {
+            maxPrice = array[i].price;
+            product = array[i].name;
+        }
+    }
+    return product.toUpperCase();   
 }
+
 console.log(mostExpensive(myProducts));
 
 
@@ -337,22 +342,73 @@ console.log(checkDigits("#000"));
 
 // 7. d) Write a function that checks if a given number belongs to the interval from 1900 to 2018. 
 
-function checkInterval(number) {
+function checkInterval(string) {
+    var number = parseInt(string);
+    if(number >= 1900 && number <= 2018) {
+        return true;
+    }
+    return false;
+}
+console.log(checkInterval("2024"));
 
+
+// 7. e) Write a function named validator that returns an object with properties stringValidator, passwordValidator, colorValidator, and yearValidator referencing 
+//the functions from a) to d).
+
+function checkCapital(string) {
+    if(string === string.toUpperCase()) {
+        return true;
+    }  
+        return false;
+}
+
+function digit (string) {
+    var arr = string.split("");
+    var arrSorted = arr.sort();
+    if(isNaN(parseInt(arrSorted[0]))){
+        return 'no digits';
+    }
+    return 'contains digit';   
+}
+
+function checkDigits(string) {
+    
+    var xarray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c' , 'd' , 'e' , 'f'];
+
+    if(string.charAt(0) === '#') {
+        if(string.length - 1 == 3 || string.length - 1 == 6 ) {
+            for(var i = 1; i < string.length; i++) {
+                if(xarray.indexOf(string[i]) == -1) {
+                    return 'invalid color 1';
+                } 
+            }
+            return 'valid color'
+        }
+        return 'invalid color 2'
+    }
+    return 'is not valid color 3';
+}
+
+function checkInterval(string) {
+    var number = parseInt(string);
     if(number >= 1900 && number <= 2018) {
         return true;
     }
     return false;
 }
 
-console.log(checkInterval(2014));
-
-
-// 7. e) Write a function named validator that returns an object with properties stringValidator, passwordValidator, colorValidator, and yearValidator referencing 
-//the functions from a) to d).
-
-
-
+function Products (name, price) {
+    this.name = name;
+    this.price = price;
+}
+function Validator (strVal, passVal, colVal, yearVal, string) {
+    this.stringValidator = strVal(string),
+    this.passwordValidator = passVal(string),
+    this.colorValidator = colVal(string),
+    this.yearValidator = yearVal(string)
+}
+ var validator = new Validator(checkCapital, digit, checkDigits, checkInterval, '#FFF123');
+ console.log(validator);
 
 
 // 8. Write a function that calculates a number of days to your birthday.
