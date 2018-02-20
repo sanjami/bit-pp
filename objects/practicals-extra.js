@@ -1,4 +1,4 @@
-// Write a functional expression that duplicates each element of a given array.
+//1. Write a functional expression that duplicates each element of a given array.
 // Input: [2, 4, 7, 11, -2, 1]
 // Output: [2, 2, 4, 4, 7, 7, 11, 11,  -2, -2, 1, 1]
 
@@ -30,7 +30,7 @@ var duplicate = function(array) {
 console.log(duplicate([2,4,7,11,-2,1]));
 
 
-// Write a functional expression that removes all duplicates in a given array.
+//2. Write a functional expression that removes all duplicates in a given array.
 // Input: [8, 13, 8, 9, 12, 8, 1, 1, 4, 13]
 // Output: [1, 4, 8, 9, 12, 13] 
 
@@ -47,7 +47,7 @@ var remove_duplicate = function(array){
 
 console.log(remove_duplicate([8,13,8,9,12,8,1,1,4,13]));
 
-// Write a function that checks if a given array has even number of elements.
+//3. Write a function that checks if a given array has even number of elements.
 // Input: [1, 2, 9, 2, 1]
 // Output: true
  
@@ -63,7 +63,7 @@ var check_even = function(array) {
 console.log(check_even([1,2,9,2,1]));
 
 
-// Write a function that counts a number of elements less than the middle element. If the given array has an even number of elements, 
+//3.b. Write a function that counts a number of elements less than the middle element. If the given array has an even number of elements, 
 // print out an error message. 
 // Input: [-1, 8.1, 3, 6, 2.3, 44, 2.11]
 // Output: 4
@@ -93,7 +93,7 @@ console.log(count([-1, 8.1,3,6,2.3,44,2.11,9]));
 
 
 
-// Write a function that finds the smallest element of a given array. The function should return an object that contains the 
+//4. Write a function that finds the smallest element of a given array. The function should return an object that contains the 
 // smallest value and its last position in the array.
 
 var find_smallest = function(array){
@@ -113,7 +113,7 @@ var find_smallest = function(array){
 
 console.log(find_smallest([-1, 5, 9, 4, 2, 3, 4]));
 
-// Write a function that finds all the elements in a given array less than a given element. 
+//5a. Write a function that finds all the elements in a given array less than a given element. 
 
 var less_element = function(array, number){
 
@@ -136,7 +136,7 @@ var less_element = function(array, number){
 console.log(less_element([2,5,7,9,10,24,15], 15));
 
 
-// Write a function that finds all the elements in a given array that start with the “pro” substring. The function should be case insensitive. 
+//5b. Write a function that finds all the elements in a given array that start with the “pro” substring. The function should be case insensitive. 
 
 var starts_with = function(array){
 
@@ -156,7 +156,7 @@ console.log(starts_with(['Professional', 'table', 'keyboard']));
 
 
 
-// Write a function that expects an array and a callback function that filters out some of the elements. 
+//5c. Write a function that expects an array and a callback function that filters out some of the elements. 
 // Use functions defined in a) or b) to test it. 
 
 //var 2
@@ -204,7 +204,7 @@ console.log(big(['Professional', 'table', 'keyboard'], starts_with ));
 
 
 
-// Write a list (array) of products you usually buy in the supermarket. Write a price and name for each product.
+//6a. Write a list (array) of products you usually buy in the supermarket. Write a price and name for each product.
 
 
 function Products (name, price) {
@@ -214,51 +214,9 @@ function Products (name, price) {
 
 var myProducts = [];
 
-<<<<<<< HEAD:object/practicals-extra.js
-// Write a function that calculates the total price of your shopping list. 
-// Write a function that calculates the average product price of your shopping list. Print this value with the precision of three decimals. 
-// Write a function that prints out the name of the most expensive product on your shopping list. Write it in uppercase. 
-
-
-//7. a) Write a function that checks if a given string is written in all capitals.
-
-function checkCapital(string) {
-
-    if(string === string.toUpperCase()) {
-        return true;
-    }  
-        return false;
-    
-
-}
-
-console.log(checkCapital('CAaITAL'));
-
-
-
-
-// 7. b) Write a function that checks if a given string contains any digits.
-
-
-
-
-
-
-
-
-
-=======
-var myProduct1 = new Products('apple', 100);
-myProducts.push(myProduct1);
-var myProduct2 = new Products('milk', 80);
-myProducts.push(myProduct2);
-var myProduct3 = new Products('bananas', 150);
-myProducts.push(myProduct3);
->>>>>>> b8a21a7c2908deb88c6bf7c0c621fa5efb54da36:objects/practicals-extra.js
-
 console.log(myProducts);
 
-// Write a function that calculates the total price of your shopping list. 
+//6b. Write a function that calculates the total price of your shopping list. 
 
 function price(array) {
     var total = array[0].price + array[1].price+ array[2].price;
@@ -266,11 +224,7 @@ function price(array) {
 }
 console.log(price(myProducts));
 
-<<<<<<< HEAD:object/practicals-extra.js
-
-
-=======
-// Write a function that calculates the average product price of your shopping list. Print this value with the precision of three decimals. 
+//6c. Write a function that calculates the average product price of your shopping list. Print this value with the precision of three decimals. 
 
 function averagePrice(array) {
     var average = (array[0].price + array[1].price+ array[2].price)/3;
@@ -278,7 +232,7 @@ function averagePrice(array) {
 }
 console.log(averagePrice(myProducts));
 
-// Write a function that prints out the name of the most expensive product on your shopping list. Write it in uppercase. 
+//6d. Write a function that prints out the name of the most expensive product on your shopping list. Write it in uppercase. 
 function Products (name, price) {
     this.name = name;
     this.price = price;
@@ -305,19 +259,33 @@ function mostExpensive(array) {
     prices.push(array[1].price);
     prices.push(array[2].price);
     console.log(prices);
-
+    
     var sortArr = prices.sort(sortNumbers);
     console.log(sortArr);
     var maxPrice = sortArr[2];
     var index = array.indexOf(maxPrice);
     console.log(index);
     return array[index].name;
-
+    
 }
 console.log(mostExpensive(myProducts));
 
 
-// Write a function that checks if a given string is written in all capitals.
+//7. a) Write a function that checks if a given string is written in all capitals.
+
+function checkCapital(string) {
+
+    if(string === string.toUpperCase()) {
+        return true;
+    }  
+        return false;
+    
+
+}
+
+console.log(checkCapital('CAaITAL'));
+
+// different solution
 
 function capitals(str) {
     var upStr = str.toUpperCase();
@@ -330,7 +298,7 @@ function capitals(str) {
 console.log(capitals('SDFtHKIJN'));
 
 
-// Write a function that checks if a given string contains any digits.
+//7b. Write a function that checks if a given string contains any digits.
 
 function digit (str) {
     var arr = str.split("");
@@ -344,23 +312,144 @@ function digit (str) {
 
 console.log(digit("bhgghfff"));
 
->>>>>>> b8a21a7c2908deb88c6bf7c0c621fa5efb54da36:objects/practicals-extra.js
-// Write a function that checks if a given string is a valid hexadecimal color.
+// 7. c)   different solution
 
-function isHex (str) {
+function checkDigits(string) {
     
+    var xarray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c' , 'd' , 'e' , 'f'];
+
+    if(string.charAt(0) === '#') {
+        if(string.length - 1 == 3 || string.length - 1 == 6 ) {
+            for(var i = 1; i < string.length; i++) {
+                if(xarray.indexOf(string[i]) == -1) {
+                    return 'invalid color 1';
+                } 
+            }
+            return 'valid color'
+        }
+        return 'invalid color 2'
+    }
+    return 'is not valid color 3';
 }
 
-// Write a function that checks if a given number belongs to the interval from 1900 to 2018. 
+console.log(checkDigits("#000"));
 
-function isInInterval (n) {
-    if(n > 1900 && n < 2018) {
+
+// 7. d) Write a function that checks if a given number belongs to the interval from 1900 to 2018. 
+
+function checkInterval(number) {
+
+    if(number >= 1900 && number <= 2018) {
         return true;
     }
     return false;
 }
-console.log(isInInterval(1985));
+
+console.log(checkInterval(2014));
 
 
-// Write a function named validator that returns an object with properties //stringValidator, passwordValidator, 
-// colorValidator, and yearValidator referencing the functions from a) to d).
+// 7. e) Write a function named validator that returns an object with properties stringValidator, passwordValidator, colorValidator, and yearValidator referencing 
+//the functions from a) to d).
+
+
+
+
+
+// 8. Write a function that calculates a number of days to your birthday.
+// Input: 25 February 
+// Output: 5 days
+
+
+
+var currentDay = new Date();
+currentDay.getTime();
+
+var birthDay = Date.parse('2018 10 03');
+
+var daysToBirth = birthDay - currentDay;
+daysToBirth / 1000 / 60 / 60 / 24;
+console.log(Math.floor(daysToBirth / 1000 / 60 / 60 / 24));
+
+
+// 9. Write a function that for a given departure and arrival time calculates the time the trip takes.
+// 	Input: 8:22:13 11:43:22
+// 	Output: 3 hours 21 minutes 8 seconds
+
+
+var startTime = Date.parse('20 Feb 2018 8:22:13 GMT');
+var finishTime = Date.parse('20 Feb 2018 11:43:22 GMT');
+
+var tripTimeS = (finishTime - startTime)/1000;
+
+var s = tripTimeS % 60;
+var tm = (tripTimeS - s)/60;
+var m = tm % 60;
+var h = (tm-m)/60;
+
+console.log(h + ":" + m + ":" + s);
+
+
+// 10.   
+// Write a constructor function that creates points in the space. Each point in the space has its own x, y, and z coordinate. For example, (3, 5, 1) can the point in the space.
+// Write a function that calculates the distance between to points in the space. 
+
+
+function CreatePoint( x, y, z) {
+
+    this.x = x,
+    this.y = y,
+    this.z = z
+}
+
+var point1 = new CreatePoint(3, 5, 1);
+var point2 = new CreatePoint(4, 2, 8);
+
+var x1 = point1.x;
+var x2 = point2.x;
+
+var y1 = point1.y;
+var y2 = point2.y;
+
+var z1 = point1.z;
+var z2 = point2.z;
+
+var distance = Math.sqrt((Math.pow(Math.abs(x2 - x1), 2)) + (Math.pow(Math.abs(y2 - y1), 2)) + (Math.pow(Math.abs(z2 - z1), 2)));
+
+console.log(distance);
+
+
+
+
+// 11.a) Write a function that generates a random integer value between 5 and 20.
+ 
+
+var generatenumber = Math.round(((20 - 5) * Math.random()) + 5);
+
+console.log(generatenumber);
+
+// Write a function that generates a random integer value between 50 and 100. 
+
+
+var generatenumber = function() {
+    var number = Math.round(((100 - 50) * Math.random()) + 50);
+    return number;
+};
+
+console.log(generatenumber());
+
+
+// Write a function which expects a number and a callback factory function and returns an array of numbers produced by the factory function.  
+
+function factory(n, f) {
+
+    var array = [];
+    for( var i = 0; i < n; i++) {
+        array.push(f());
+    }
+    return array;
+}
+
+console.log(factory(5, generatenumber));
+
+
+
