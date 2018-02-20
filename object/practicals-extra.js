@@ -198,17 +198,44 @@ var products = {
 
 
 
-
-
-
-
 // Write a function that calculates the total price of your shopping list. 
 // Write a function that calculates the average product price of your shopping list. Print this value with the precision of three decimals. 
 // Write a function that prints out the name of the most expensive product on your shopping list. Write it in uppercase. 
 
 
-// Write a function that checks if a given string is written in all capitals.
-// Write a function that checks if a given string contains any digits.
+//7. a) Write a function that checks if a given string is written in all capitals.
+
+function checkCapital(string) {
+
+    if(string === string.toUpperCase()) {
+        return true;
+    }  
+        return false;
+    
+
+}
+
+console.log(checkCapital('CAaITAL'));
+
+
+
+
+// 7. b) Write a function that checks if a given string contains any digits.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Write a function that checks if a given string is a valid hexadecimal color.
 // Write a function that checks if a given number belongs to the interval from 1900 to 2018. 
 // Write a function named validator that returns an object with properties stringValidator, passwordValidator, 
