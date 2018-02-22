@@ -32,27 +32,43 @@
         this.averagePrice = function () {
             var totalPrice = 0;
             var avPrice = 0;
-            for (var i = 0; i < this.listOfProducts.length; i++) {
-                totalPrice += this.listOfProducts[i].price;
-            }
-            avPrice = totalPrice / this.listOfProducts.length;
-            return "Average price is " + avPrice.toFixed(3);
+
+            this.listOfProducts.forEach(function(element){
+                totalPrice += element.price;
+            })
+
+            // for (var i = 0; i < this.listOfProducts.length; i++) {
+            //     totalPrice += this.listOfProducts[i].price;
+            // }
+            // avPrice = totalPrice / this.listOfProducts.length;
+            return "Average price is " + totalPrice/this.listOfProducts.length.toFixed(3);
         };
+
         this.getMostExpensive = function () {
-            var max = this.listOfProducts[0].price;
-            var position = 0;
+         //   var max = this.listOfProducts[0].price;
+            var max = 0;
+        //    var position = 0;
             var mostExpensiveProduct;
 
-            for (var i = 0; i < this.listOfProducts.length; i++) {
-                var product =  this.listOfProducts[i];
-                if (max < product.price) {
-                    max = product.price;
-                    position = i;
+            this.listOfProducts.forEach(function(element){
+                if (element.price > max) {
+                    max = element.price;
+                    mostExpensiveProduct = element;
                 }
-            }
-            mostExpensiveProduct = this.listOfProducts[position].getInfo();
-            return "Most expensive product is " + mostExpensiveProduct;
+            })
+
+            // for (var i = 0; i < this.listOfProducts.length; i++) {
+            //     var product =  this.listOfProducts[i];
+            //     if (max < product.price) {
+            //         max = product.price;
+            //         position = i;
+            //     }
+            // }
+            // mostExpensiveProduct = this.listOfProducts[position].getInfo();
+            
+            return "Most expensive product is " + mostExpensiveProduct.name;
         }
+
         this.addProduct = function (product) {
             if (product.expirationDate > new Date()) {
                 this.listOfProducts.push(product);
@@ -61,9 +77,14 @@
         this.totalBagPrice = function () {
             var allPrice = 0;
 
-            for (var i = 0; i < this.listOfProducts.length; i++) {
-                allPrice += this.listOfProducts[i].price;
-            }
+            this.listOfProducts.forEach(function(element){
+                allPrice += element.price;
+            })
+
+            // for (var i = 0; i < this.listOfProducts.length; i++) {
+            //     allPrice += this.listOfProducts[i].price;
+            // }
+
             return allPrice;
         }
     }
@@ -76,7 +97,7 @@
 
     // console.log(totalBagPrice(shoppingBag));
     //  console.log(shoppingBag.averagePrice());
-    //  console.log(shoppingBag.getMostExpensive());
+      console.log(shoppingBag.getMostExpensive());
 
     function PaymentCard(balance, status, expDate) {
         this.balance = balance;
