@@ -116,21 +116,25 @@
             var genre1;
             genre1 = new Genre(genre)
             
-            
             var movie;
             movie3 = new Movie(title, length, genre1);
             console.log(movie3);
             return movie3; 
         };
 
-        var m = createMovie("Star wars", 120, 'fantasy');
-       console.log(m);
+        var starWars = createMovie("Star wars", 120, 'fantasy');
+       console.log(starWars);
  
 
-    
+        function createProgram(date) {
+            var program1 = new Program(date);
+            return program1;
+        }
 
 
-
+        var secondDay = createProgram(new Date(2018, 2, 12));
+        secondDay.addMovie(starWars);
+        console.log(secondDay);
 
 
 
