@@ -171,19 +171,21 @@
         pass4 = createPassenger("Tyrion", "Lannister");
         pass5 = createPassenger("John", "Snow", 10, "b")
         pass6 = createPassenger("Cersei", "Lannister", 72, 'b');
-
+        
         flight1.addPassenger(pass1);
         flight1.addPassenger(pass2);
         flight2.addPassenger(pass3);
         flight2.addPassenger(pass4);
         flight2.addPassenger(pass6);
-        flight1.addPassenger(pass6);
-
+        flight1.addPassenger(pass6);   
         flight1.addPassenger(pass5);
+
         var airport = new Airport();
+
         airport.addFlight(flight1);
         airport.addFlight(flight2);
         flight1.addPassenger(pass1);
+        
         console.log(airport.getData());
 
     } catch (err) {
