@@ -50,7 +50,7 @@
                     if (counter < 4 && totalLength < (10 * 60)) {
                         this.listOfMovie.push(movie);
                     } else {
-                        console.log('>8h')
+                        console.log('More then 8h of movies or more than 4 of same genre')
                     }
                 },
                 this.getData = function () {
@@ -87,7 +87,7 @@
                     if (this.maximumNumberOfMovie > this.numberOfMoviesInPrograms() + program.totalNumberOfMovies()) {
                         this.listOfPrograms.push(program);
                     } else{
-                        console.log('vise od 10 filmova');
+                        console.log('More than maximum');
                     }
                 },
             this.getData = function () {
