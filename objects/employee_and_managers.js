@@ -27,11 +27,11 @@ Manager.prototype.changeDepartment = function(department) {
 
 
 
-var e1 = new Employee("Pera", "Peric", "radnik", "500");
-console.log(e);
+var e1 = new Employee("Pera", "Peric", "radnik", 500);
+ // console.log(e1);
 
 var m1 = new Manager("Laza", "Lazarevic", "sales", 700);
-console.log(m1);
+ // console.log(m1);
 
 
 m1.changeDepartment("analytics");
@@ -43,18 +43,22 @@ var shareMethods = {
     getSalary: function() {
         console.log(this.salary);
     },
-    increaseSalary = function() {
-        var newSalary;
-        newSalary=this.salary*1.1
-        this.salary = newSalary;
+    increaseSalary: function() {
+        this.salary = this.salary*1.1
+        return this.salary
     }
-};
+}
 
 Employee.prototype.__proto__=shareMethods;
 Manager.prototype.__proto__ =shareMethods;
 
 
+console.log(e1.getData());
 console.log(e1.getSalary());
+console.log(e1.increaseSalary());
+console.log(m1.getData());
+console.log(m1.getSalary());
+console.log(m1.increaseSalary());
 
 
 

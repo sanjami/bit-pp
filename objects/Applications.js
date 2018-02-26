@@ -13,10 +13,12 @@ function MobileApp(name, platforms, licence, stars) {
     this.stars = stars
 }
 
-var webapp1 = new WebApp("myapp", "www.http://myapp.com", ["javaScript",  "jQuery"], "cc", 5 );
+var webapp1 = new WebApp("myapp", "www.http://myapp.com", ["javaScript", "react", "jQuery"], "cc", 5 );
+
 // console.log(webapp1);
 
 var mobapp1 = new MobileApp("myMapp", ["android", "mac"], "bb", 6);
+
 // console.log(mobapp1);
 
 WebApp.prototype.getData = function() {
