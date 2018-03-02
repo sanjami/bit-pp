@@ -43,7 +43,7 @@ function createMovie() {
         var movie = new CreateMovie(titleValue, lengthValue, genreValue);
         movieList.push(movie);
 
-        var movieIndex = movieList.indexOf(movie);
+        var movieIndex = movie.movieId;
         var message = error.OK;
 
         var movieInfo = movie.getData();
@@ -99,45 +99,84 @@ function createProgram() {
             return 'Insert date!'
         } else {
             return "OK"
-          }
-        }
-    
-        var validationResult = validation(dateValue);
-
-        if(validationResult == 'OK'){
-            var program = new Program(dateValue);
-            programList.push(program);
-            var programIndex = programList.indexOf(program);
-
-            var programInfo = program.getData();
-
-            var programText = document.createTextNode(programInfo);           
-            var ul = document.querySelector('#programUl');
-            var li = document.createElement('li');
-            li.appendChild(programText);
-            ul.appendChild(li);
-            
-            
-            var programText = document.createTextNode(programInfo);
-            var select = document.querySelector('#programSelect');
-            var option = document.createElement('option');
-            option.appendChild(programText);
-            option.value = programIndex;
-            select.appendChild(option);
         }
     }
 
+    var validationResult = validation(dateValue);
 
- //Add movie to program  
+    if (validationResult == 'OK') {
+        var program = new Program(dateValue);
+        programList.push(program);
+        var programIndex = program.programId;
 
- document.querySelector('#addMovieToProgram').addEventListener('click', addMovieToProgram);
+        var programInfo = program.getData();
 
- function addMovieToProgram() {
-     var movieIndex = document.querySelector('#movieSelect').value;
-     var movie = movieList[movieIndex];
-     var programIndex = document.querySelector('#programSelect').value;
-     var program = programList[programIndex];
-     program.addMovie(movie);
-    };
+        var programText = document.createTextNode(programInfo);
+        var ul = document.querySelector('#programUl');
+        var li = document.createElement('li');
+        li.setAttribute('data-programIndex', programIndex);
+        li.appendChild(programText);
+        ul.appendChild(li);
+
+
+        var programText = document.createTextNode(programInfo);
+        var select = document.querySelector('#programSelect');
+        var option = document.createElement('option');
+        option.appendChild(programText);
+        option.value = programIndex;
+        select.appendChild(option);
+    }
+    select.value = '-';
+}
+
+
+//Add movie to program  
+
+document.querySelector('#addMovieToProgram').addEventListener('click', addMovieToProgram);
+
+function addMovieToProgram() {
+    document.querySelector("#errorText").innerHTML = '';
+    var movieSelect = document.querySelector('#movieSelect')
+    var movieIndex = movieSelect.value;
+    var movie;
+    for (var i = 0; i < movieList.length; i++) {
+        if (movieList[i].movieId == parseInt(movieIndex)) {
+            movie = movieList[i];
+        }
+    }
+
+    var programSelect = document.querySelector('#programSelect');
+    var programIndex = programSelect.value;
+    var program;
+    for (var i = 0; i < programList.length; i++) {
+        if (programList[i].programId == parseInt(programIndex)) {
+            program = programList[i];
+        }
+    }
+
+    var result = program.addMovie(movie);
+
+    if(result == "Movie already in program"){
+        var text = document.createTextNode(result);
+        var errorDiv = document.querySelector("#errorText");
+        errorDiv.appendChild(text);
+    }
+    var li = document.querySelector("li[data-programIndex = '" + programIndex + "']");
+    var programInfo = program.getData();
+    li.textContent = programInfo;
+
+    if(result == 'More then 8h of movies or more than 4 of same genre'){
+        var text = document.createTextNode(result);
+        var errorDiv = document.querySelector("#errorText");
+        errorDiv.appendChild(text);
+    }
+
+    var li = document.querySelector("li[data-programIndex = '" + programIndex + "']");
+    var programInfo = program.getData();
+    li.textContent = programInfo;
+   
+    movieSelect.value = "-";
+    programSelect.value = "-";
+};
 
 // TODO update program data, messages

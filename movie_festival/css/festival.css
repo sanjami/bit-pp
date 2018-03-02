@@ -13,7 +13,7 @@ h3 {
 #addMovie {
     width: 800px;
     margin: 10px auto;
-    border: 1px solid black;
+    border: 1px solid rgb(135, 62, 219);
     
 }
 
@@ -38,7 +38,7 @@ select {
     background-color:  rgb(243, 240, 240);
 }
 .btn {
-    background-color: green;
+    background-color: rgb(135, 62, 219);
     color: white;
     padding: 5px;
     width: 97%;
@@ -71,6 +71,11 @@ ul {
 #addProgram {
     width: 800px;
     margin: 10px auto;
-    border: 1px solid black;
+    border: 1px solid rgb(135, 62, 219);
     
+}
+
+#errorText, #errorMessage {
+    color:red;
+    margin-left: 15px;
 }
