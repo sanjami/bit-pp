@@ -42,14 +42,25 @@ function createMovie() {
     if (validationResult == error.OK) {
         var movie = new CreateMovie(titleValue, lengthValue, genreValue);
         movieList.push(movie);
+
+        var movieIndex = movieList.indexOf(movie);
         var message = error.OK;
+
+        var movieInfo = movie.getData();
+
+        var movieText = document.createTextNode(movieInfo);
         var ul = document.querySelector('#movieUl');
         var li = document.createElement('li');
-        var movieInfo = movie.getData();
-        var movieText = document.createTextNode(movieInfo);
         li.appendChild(movieText);
         ul.appendChild(li);
         document.querySelector("#errorMessage").innerHTML = '';
+
+        var movieText = document.createTextNode(movieInfo);
+        var select = document.querySelector('#movieSelect');
+        var option = document.createElement('option');
+        option.appendChild(movieText);
+        option.value = movieIndex;
+        select.appendChild(option);
     }
 
     var text = document.createTextNode(message);
@@ -72,6 +83,9 @@ function createMovie() {
 
 }
 
+//create program        
+
+
 var programList = [];
 
 document.querySelector('#programButton').addEventListener('click', createProgram);
@@ -84,16 +98,46 @@ function createProgram() {
         if (dateValue == '') {
             return 'Insert date!'
         } else {
+            return "OK"
+          }
+        }
+    
+        var validationResult = validation(dateValue);
+
+        if(validationResult == 'OK'){
             var program = new Program(dateValue);
-            console.log(program);
             programList.push(program);
+            var programIndex = programList.indexOf(program);
+
+            var programInfo = program.getData();
+
+            var programText = document.createTextNode(programInfo);           
             var ul = document.querySelector('#programUl');
             var li = document.createElement('li');
-            var programInfo = program.getData();
-            var programText = document.createTextNode(programInfo);
             li.appendChild(programText);
             ul.appendChild(li);
+            
+            
+            var programText = document.createTextNode(programInfo);
+            var select = document.querySelector('#programSelect');
+            var option = document.createElement('option');
+            option.appendChild(programText);
+            option.value = programIndex;
+            select.appendChild(option);
         }
     }
 
-}
+
+ //Add movie to program  
+
+ document.querySelector('#addMovieToProgram').addEventListener('click', addMovieToProgram);
+
+ function addMovieToProgram() {
+     var movieIndex = document.querySelector('#movieSelect').value;
+     var movie = movieList[movieIndex];
+     var programIndex = document.querySelector('#programSelect').value;
+     var program = programList[programIndex];
+     program.addMovie(movie);
+    };
+
+// TODO update program data, messages
