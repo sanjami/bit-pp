@@ -42,8 +42,7 @@ function createMovie() {
     if (validationResult == error.OK) {
         var movie = new CreateMovie(titleValue, lengthValue, genreValue);
         movieList.push(movie);
-
-        var movieIndex = movie.movieId;
+        var movieIndex = movie.movieId();
         var message = error.OK;
 
         var movieInfo = movie.getData();
@@ -107,7 +106,7 @@ function createProgram() {
     if (validationResult == 'OK') {
         var program = new Program(dateValue);
         programList.push(program);
-        var programIndex = program.programId;
+        var programIndex = program.programId();
 
         var programInfo = program.getData();
 
@@ -138,9 +137,10 @@ function addMovieToProgram() {
     document.querySelector("#errorText").innerHTML = '';
     var movieSelect = document.querySelector('#movieSelect')
     var movieIndex = movieSelect.value;
+
     var movie;
     for (var i = 0; i < movieList.length; i++) {
-        if (movieList[i].movieId == parseInt(movieIndex)) {
+        if (movieList[i].movieId() == movieIndex) {
             movie = movieList[i];
         }
     }
@@ -149,8 +149,10 @@ function addMovieToProgram() {
     var programIndex = programSelect.value;
     var program;
     for (var i = 0; i < programList.length; i++) {
-        if (programList[i].programId == parseInt(programIndex)) {
+        if (programList[i].programId() == programIndex) {
             program = programList[i];
+            console.log(programList[i].programId());
+            console.log(programIndex);
         }
     }
 
