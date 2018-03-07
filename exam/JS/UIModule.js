@@ -1,5 +1,9 @@
 var UIModule = (function () {
 
+
+ // uzeli selektore
+
+
 var formSelectors = {
     subjectSelector: '.add-subject',
     studentSelector: '.add-student-name',
@@ -9,9 +13,14 @@ var formSelectors = {
     failedSelector : '.exam-failed-count',
     failedPercentageSelector : '.exam-failed-percentage',
     buttonSelector: '.add-btn',
-    errorSelector: '#error'
+    errorSelector: '#error',
+    passedListSelector: '.passed-list',
+    failedListSelector: '.failed-list',
+    totalNumberOfStudents: '#exam-total'
+
 }
 
+// selektovana polja
 
 var subjectInput = document.querySelector(formSelectors.subjectSelector);
 var studentInput = document.querySelector(formSelectors.studentSelector);
@@ -21,6 +30,10 @@ var passedPercentage = document.querySelector(formSelectors.passedPercentageSele
 var totalFailed = document.querySelector(formSelectors.failedSelector);
 var failedPercentage = document.querySelector(formSelectors.failedPercentageSelector);
 var errorBlock = document.querySelector(formSelectors.errorSelector);
+var totalNumber = document.querySelector(formSelectors.totalNumberOfStudents);
+
+
+
 
 var errors = {
     OK: 'OK',
@@ -29,14 +42,22 @@ var errors = {
     WRONG_GRADE: 'A grade should be from 1 to 10.'
 }
 
+//uzimanje podataka iz polja
+
 function getFormData() {
+    var studentInputData = studentInput.value;
+    var arrName = studentInputData.split(' ');
+    
     var formData = {};
     formData.subjectInputData = subjectInput.value;
     formData.studentInputData = studentInput.value;
+    formData.studentName = arrName[0];
+    formData.studentSurname = arrName[1];
     formData.gradeInputData = gradeInput.value;
     return formData;
 }
 
+// provera odnosno validacija unetih podataka 
 
 var studentValidation = function validateStudent(nameSurname) {
     var position =  nameSurname.indexOf(' ');
@@ -56,7 +77,7 @@ function validation(subject, student, grade) {
         return errors.MISSING_DATA;
     } else if (student.indexOf(' ') == -1) {
         return errors.WRONG_STUDENT;
-    } else if (studentValidation == false) {
+    } else if (studentValidation(student) == false) {
         return errors.WRONG_STUDENT
     } else if (grade < 1 || grade > 10) {
         return errors.WRONG_GRADE;
@@ -72,24 +93,26 @@ function clearError(){
     errorBlock.textContent = "";
 }
 
-function updateList() {
-    var text = document.createTextNode(student.getStudentData());
+
+
+// vracanje podataka u listu
+
+function updateList(text) {    
     var li = document.createElement('li');
     var ul = document.createElement('ul');
     li.appendChild(text);
     ul.appendChild(li);
+    return ul;
 }
 
-var passedStudents = 0;
-var failedStudents = 0;
 
 
-function updateStatistics(){
+function updateStatistics(passedStudents, failedStudents){
     totalPassed.textContent = passedStudents;
     totalFailed.textContent = failedStudents;
-    passedPercentage.textContent = passedStudents / (passedStudents+failedStudents) * 100 + '%';
-    failedPercentage.textContent = failedStudents / (passedStudents+failedStudents) * 100 + '%';
-
+    passedPercentage.textContent = (passedStudents / (passedStudents+failedStudents)).toFixed(2) * 100 + '%';
+    failedPercentage.textContent = (failedStudents / (passedStudents+failedStudents)).toFixed(2) * 100 + '%';
+    totalNumber.textContent = failedStudents + passedStudents;
 }
 
 return {

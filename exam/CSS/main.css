@@ -176,6 +176,10 @@ body {
 
 .add-btn:focus { outline: none; }
 
+#error {
+    color: red;
+}
+
 /***** LISTS *****/
 .container {
     width: 1000px;
