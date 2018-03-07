@@ -155,7 +155,8 @@ let arrayOfPerson
 function checkPositiveValue(array){
     
     let result = array.every(function(element){
-       return element > 0;
+        return  Math.sign(element) == 1;
+
     })
     if(result == true) {
         return 'yes';
