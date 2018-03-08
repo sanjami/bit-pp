@@ -1,11 +1,11 @@
 // 1.Write a function that capitalizes the first letter of each string argument it receives.  
 // Function arguments: ‘hello’, ‘there’, ‘ES’, 6
-// Output: ‘Hello’, ‘There’, ‘ES’
+// Output: ‘Hello’, ‘There’, ‘ES’;
 
 
-function capitalize(...args) {
+let capitalize = (...args) => {
     let result = '';
-    args.forEach(function (element, index) {
+    args.forEach((element, index) => {
         if (typeof element == 'string') {
             let letter = element[0].toUpperCase();
             let rest = element.substring(1);
@@ -13,48 +13,43 @@ function capitalize(...args) {
         }
     })
     return result;
-}
+};
 console.log(capitalize('hello', 'there', 'ES', 6));
 
 // 2.Write a function that calculates sale tax that should be paid for the product of the given price. Use a constant to set a fixed value of the tax rate (i.e. 20% in Serbia). 
-// 	Input: 120
-// 	Output: 24
+// 	Input: 120;
+// 	Output: 24;
 
-function calculateTax(x) {
+let calculateTax = (x) => {
     const t = 0.2;
     let y = x / (1 + t);
     return y * t;
-}
+};
 
 console.log(calculateTax(120));
 
 
 // 3.Write a function that increases each element of the given array by the given value. If the value is omitted, increase each element of the array by 1.  
 // 	Input: [4, 6, 11, -9, 2.1], 2
-// 	Output: [6, 8, 13, -7, 4.1]
+// 	Output: [6, 8, 13, -7, 4.1];
 
 
-function increaseArray(array, n = 1) {
-    let newArray = array.map(function(element) {
-        return element + n;
-    })
+let increaseArray = (array, n = 1) => {
+    let newArray = array.map((element) => element + n);
     return newArray;
-}
+};
 
 console.log(increaseArray([4, 6, 11, -9, 2.1], 2));
 
 
 
-
 // 4.Write a function that filters all even elements of the array.
-// 	Input: [6, 11, 9, 0, 3]
+// 	Input: [6, 11, 9, 0, 3];
 // 	Output: [6, 0]
 
 
-function fileterElements(array) {
-    let newarr = array.filter(function(element){
-      return  element % 2 == 0;
-    })
+let fileterElements = (array) => {
+    let newarr = array.filter((element) => element % 2 == 0);
 return newarr;
 }
 console.log(fileterElements([6, 11, 9, 0, 3]));
@@ -65,10 +60,8 @@ console.log(fileterElements([6, 11, 9, 0, 3]));
 // 	Output: [‘babel.js, ‘JS standard’]
 
 
-function filterStrings(array) {
-    let newArray = array.filter(function(element){
-      return  element.includes('JS') || element.includes('js'); 
-    })
+let filterStrings = (array) => {
+    let newArray = array.filter((element) => element.includes('JS') || element.includes('js'));
     return newArray;
 }
 
@@ -79,11 +72,9 @@ console.log(filterStrings(['compiler', 'transpiler', 'babel.js', 'JS standard', 
 // Input: [1.6, 11.34, 9.23, 7, 3.11, 8]
 // 	Output: [7, 8]
 
-function filterInteger(array) {
+let filterInteger = (array) => {
 
-    let newArray = array.filter(function(element){
-        return Number.isInteger(element);
-    })
+    let newArray = array.filter((element) => Number.isInteger(element));
     return newArray;
 }
 console.log(filterInteger([1.6, 11.34, 9.23, 7, 3.11, 8]));
@@ -95,9 +86,9 @@ console.log(filterInteger([1.6, 11.34, 9.23, 7, 3.11, 8]));
 // 	Output: 45, 553
 
 
-function filterInteger(...args){
+let filterInteger = (...args) => {
 let result = '';
-    args.forEach(function(element){
+    args.forEach((element) => {
         if(typeof element == 'number') {
             if(Number.isInteger(element)){
                let checkInteger = element.toString();
@@ -119,9 +110,9 @@ console.log(filterInteger(23, 11.5, 9, 'abc', 45, 28, 553));
 // 	Input: [1.6, 11.34, 29.23, 7, 3.11, 18]
 // 	Output: 1, 2, 5
 
-function returnIndex(array) {
+let returnIndex = (array) => {
     let result = '';
-    array.forEach(function(element, index){
+    array.forEach((element, index) => {
 
         if(element > 10) {
              result += `${index}, `;
@@ -138,10 +129,66 @@ console.log(returnIndex([1.6, 11.34, 29.23, 7, 3.11, 18]));
 
 // 9. a.Create an array of persons. A person should be an object with name and age properties. Experiment with enhanced object literals. 
 // b.Write a function that prints out the names of persons older than 25. 
-// c.Write a function that check if there is a person older than 40.
+
+
+
+let arrayOfPerson = [{name: 'pera', age: 26},{name: 'zika', age: 26}];
+
+let printOlderPersons = (arrayOfPerson) => {
+
+    let result ='';
+    arrayOfPerson.forEach((element) => {
+
+        if(element.age > 25) {
+            result += `${element.name} `;
+        } 
+    })
+   return result;
+}
+
+console.log(printOlderPersons(arrayOfPerson));
+
+// 9. c.Write a function that check if there is a person older than 40.
+
+let arrayOfPerson = [{name: 'pera', age: 26},{name: 'zika', age: 40}];
+
+let printOlderPersons = (arrayOfPerson) => {
+
+ 
+   let result = arrayOfPerson.some((element) => element.age > 40);
+    if(result == true) {
+        return 'There are person older than 40';
+    } else {
+        return 'There are not anyone who are older than 40';
+    }
+}
+
+
+
+console.log(printOlderPersons(arrayOfPerson));
+
+
 // d.Write a function that checks if all persons are older than 20.   
 
-let arrayOfPerson 
+
+let arrayOfPerson = [{name: 'pera', age: 26},{name: 'zika', age: 19}];
+
+let printOlderPersons = (arrayOfPerson) => {
+
+ 
+   let result = arrayOfPerson.every((element) => element.age > 20);
+    if(result == true) {
+        return 'All persons are older than 20';
+    } else {
+        return 'Not all persons are older than 20';
+    }
+}
+
+
+
+console.log(printOlderPersons(arrayOfPerson));
+
+
 
 
 
@@ -152,11 +199,9 @@ let arrayOfPerson
 // 	Input: [3, -12, 4, 11]
 // 	Output: no
 
-function checkPositiveValue(array){
+let checkPositiveValue = (array) => {
     
-    let result = array.every(function(element){
-       return element > 0;
-    })
+    let result = array.every((element) => element > 0);
     if(result == true) {
         return 'yes';
     }
@@ -167,16 +212,13 @@ console.log(checkPositiveValue([3, 11, 9, 5, 6]));
 
 
 
-
 // 11.Write a function that calculates the product of the elements of the array. 
 // Input: [2, 8, 3]
 // Output:  48
 
-function calculateProduct(array){
+let calculateProduct = (array) => {
 
-   let result = array.reduce(function(acumulator, element){
-       return acumulator*element;
-    })
+   let result = array.reduce((acumulator, element) => acumulator*element);
     return result;
 }
 
@@ -187,9 +229,9 @@ console.log(calculateProduct([2, 8, 3]));
 // Input: [2, 7, 3, 8, 5.4] 
 // 	Output: 8
 
-function calculateMax(array){
+let calculateMax = (array) => {
 
-   let result = array.reduce(function(acumulator, element){
+   let result = array.reduce((acumulator, element) => {
         if(acumulator>element){
             return acumulator;
         }
