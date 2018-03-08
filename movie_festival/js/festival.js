@@ -151,8 +151,6 @@ function addMovieToProgram() {
     for (var i = 0; i < programList.length; i++) {
         if (programList[i].programId() == programIndex) {
             program = programList[i];
-            console.log(programList[i].programId());
-            console.log(programIndex);
         }
     }
 

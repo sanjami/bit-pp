@@ -154,7 +154,6 @@ let arrayOfPerson = [{name: 'pera', age: 26},{name: 'zika', age: 40}];
 
 let printOlderPersons = (arrayOfPerson) => {
 
- 
    let result = arrayOfPerson.some((element) => element.age > 40);
     if(result == true) {
         return 'There are person older than 40';
@@ -175,7 +174,6 @@ let arrayOfPerson = [{name: 'pera', age: 26},{name: 'zika', age: 19}];
 
 let printOlderPersons = (arrayOfPerson) => {
 
- 
    let result = arrayOfPerson.every((element) => element.age > 20);
     if(result == true) {
         return 'All persons are older than 20';
@@ -183,8 +181,6 @@ let printOlderPersons = (arrayOfPerson) => {
         return 'Not all persons are older than 20';
     }
 }
-
-
 
 console.log(printOlderPersons(arrayOfPerson));
 
@@ -232,7 +228,7 @@ console.log(calculateProduct([2, 8, 3]));
 let calculateMax = (array) => {
 
    let result = array.reduce((acumulator, element) => {
-        if(acumulator>element){
+        if(acumulator > element){
             return acumulator;
         }
         else{
