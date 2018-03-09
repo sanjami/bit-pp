@@ -1,70 +1,70 @@
 var movieList = [];
 
 
-document.querySelector('#movieButton').addEventListener('click', createMovie);
+document.querySelector(UIModule.formSelectors.movieButtonSelector).addEventListener('click', createMovie);
 
 function createMovie() {
 
-    var movieTitle = document.querySelector('#title');
-    var movieLength = document.querySelector('#length');
-    var movieGenre = document.querySelector('#genre');
+    // var movieTitle = document.querySelector('#title');
+    // var movieLength = document.querySelector('#length');
+    // var movieGenre = document.querySelector('#genre');
 
-    var titleValue = movieTitle.value;
-    var lengthValue = movieLength.value;
-    var genreValue = movieGenre.value;
+    // var titleValue = movieTitle.value;
+    // var lengthValue = movieLength.value;
+    // var genreValue = movieGenre.value;
 
-    var error = {
-        OK: '',
-        INSERT_TITLE: 'Missing title!',
-        INSERT_LENGTH: 'Missing length!',
-        INSERT_GENRE: 'Missing genre!'
-    }
+    // var error = {
+    //     OK: '',
+    //     INSERT_TITLE: 'Missing title!',
+    //     INSERT_LENGTH: 'Missing length!',
+    //     INSERT_GENRE: 'Missing genre!'
+    // }
 
-    function validation(titleValue, lengthValue, genreValue) {
-        if (titleValue != "") {
-            if (parseInt(lengthValue) > 0 && parseInt(lengthValue) < 240) {
-                if (genreValue != '-') {
-                    return error.OK;
-                }
-                return error.INSERT_GENRE;
-            }
-            return error.INSERT_LENGTH;
-        }
-        return error.INSERT_TITLE;
-    }
+    // function validation(titleValue, lengthValue, genreValue) {
+    //     if (titleValue != "") {
+    //         if (parseInt(lengthValue) > 0 && parseInt(lengthValue) < 240) {
+    //             if (genreValue != '-') {
+    //                 return error.OK;
+    //             }
+    //             return error.INSERT_GENRE;
+    //         }
+    //         return error.INSERT_LENGTH;
+    //     }
+    //     return error.INSERT_TITLE;
+    // }
 
-    var validationResult = validation(titleValue, lengthValue, genreValue);
+    var validationResult = movieValidation(titleValue, lengthValue, genreValue);
 
     if (validationResult != error.OK) {
         var message = validationResult;
     }
 
     if (validationResult == error.OK) {
-        var movie = new CreateMovie(titleValue, lengthValue, genreValue);
+        var movie = new dataModule.CreateMovie(titleValue, lengthValue, genreValue);
         movieList.push(movie);
         var movieIndex = movie.movieId();
         var message = error.OK;
 
         var movieInfo = movie.getData();
 
-        var movieText = document.createTextNode(movieInfo);
-        var ul = document.querySelector('#movieUl');
-        var li = document.createElement('li');
-        li.appendChild(movieText);
-        ul.appendChild(li);
-        document.querySelector("#errorMessage").innerHTML = '';
+        // var movieText = document.createTextNode(movieInfo);
+        // var ul = document.querySelector('#movieUl');
+        // var li = document.createElement('li');
+        // li.appendChild(movieText);
+        // ul.appendChild(li);
+        // document.querySelector("#errorMessage").innerHTML = '';
 
-        var movieText = document.createTextNode(movieInfo);
-        var select = document.querySelector('#movieSelect');
-        var option = document.createElement('option');
-        option.appendChild(movieText);
-        option.value = movieIndex;
-        select.appendChild(option);
+        // var movieText = document.createTextNode(movieInfo);
+        // var select = document.querySelector('#movieSelect');
+        // var option = document.createElement('option');
+        // option.appendChild(movieText);
+        // option.value = movieIndex;
+        // select.appendChild(option);
     }
 
-    var text = document.createTextNode(message);
-    var errorDiv = document.querySelector("#errorMessage");
-    errorDiv.appendChild(text);
+    // var text = document.createTextNode(message);
+    // var errorDiv = document.querySelector("#errorMessage");
+    // errorDiv.appendChild(text);
 
 
 
@@ -87,7 +87,7 @@ function createMovie() {
 
 var programList = [];
 
-document.querySelector('#programButton').addEventListener('click', createProgram);
+document.querySelector(UIModule.formSelectors.programButtonSelector).addEventListener('click', createProgram);
 
 function createProgram() {
     var programDate = document.querySelector('#date');
@@ -101,29 +101,29 @@ function createProgram() {
         }
     }
 
-    var validationResult = validation(dateValue);
+    var validationResult = dateValidation(dateValue);
 
     if (validationResult == 'OK') {
-        var program = new Program(dateValue);
+        var program = new dataModule.Program(dateValue);
         programList.push(program);
         var programIndex = program.programId();
 
         var programInfo = program.getData();
 
-        var programText = document.createTextNode(programInfo);
-        var ul = document.querySelector('#programUl');
-        var li = document.createElement('li');
-        li.setAttribute('data-programIndex', programIndex);
-        li.appendChild(programText);
-        ul.appendChild(li);
+        // var programText = document.createTextNode(programInfo);
+        // var ul = document.querySelector('#programUl');
+        // var li = document.createElement('li');
+        // li.setAttribute('data-programIndex', programIndex);
+        // li.appendChild(programText);
+        // ul.appendChild(li);
 
 
-        var programText = document.createTextNode(programInfo);
-        var select = document.querySelector('#programSelect');
-        var option = document.createElement('option');
-        option.appendChild(programText);
-        option.value = programIndex;
-        select.appendChild(option);
+        // var programText = document.createTextNode(programInfo);
+        // var select = document.querySelector('#programSelect');
+        // var option = document.createElement('option');
+        // option.appendChild(programText);
+        // option.value = programIndex;
+        // select.appendChild(option);
     }
     select.value = '-';
 }

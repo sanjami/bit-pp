@@ -1,3 +1,6 @@
+var dataModule = (function(){
+
+
 class CreateMovie {
 
     constructor(name, length, genre) {
@@ -7,16 +10,15 @@ class CreateMovie {
         var setId = (function () {
             return Math.random().toString(36).substr(2, 9);
         })();
-        this.movieId = function () {
-            return setId;
-        };
+        this.movieId = () => setId;
     };
     getData() {
         let ge = this.movieGenre.charAt(0).toUpperCase() + this.movieGenre.charAt(this.movieGenre.length - 1).toUpperCase();
-        let movieData = this.movieName + ', ' + this.movieLength + 'min, ' + ge;
+        let movieData = `${this.movieName}, ${this.movieLength} min, ${ge}`;
         return movieData;
     };
 }
+
 
 
 class Program {
@@ -26,9 +28,7 @@ class Program {
         var setId = (function () {
             return Math.random().toString(36).substr(2, 9);
         })();
-        this.programId = function () {
-            return setId;
-        }
+        this.programId = () => setId;
     };
     totalNumberOfMovies() {
         return this.listOfMovie.length
@@ -38,15 +38,19 @@ class Program {
         let programLength = 0;
         let numberOfMovie = this.listOfMovie.length;
         if (numberOfMovie == 0) {
-           let aboutMovies = date + ", " + 'Program to be announced';
+           let aboutMovies = `${date}, Program to be announced`;
            return aboutMovies;
         }
-        this.listOfMovie.forEach(function (element) {
+        this.listOfMovie.forEach((element) => {
             programLength += parseInt(element.movieLength);
         });
 
-        return date + ", " + numberOfMovie + " movies " + ", duration: " + programLength + " min ";
+        return `${date}, ${numberOfMovie} movies, duration: ${programLength} min`;
     };
+    
+
+
+
     addMovie(movie) {
         let counter = 0;
         let totalLength = 0;
@@ -66,3 +70,9 @@ class Program {
         }
     };
 }
+
+    return {
+        CreateMovie: CreateMovie,
+        Program: Program
+    }
+})();
