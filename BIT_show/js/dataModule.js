@@ -46,6 +46,15 @@ const dataModule = (function(){
         addShow(show) {
             this.showsList.push(show);
         }
+        getShow(id){
+            
+            let result =  this.showsList.filter(show => show.id == id);
+            if(result.length){
+                return null;
+            }
+            return result[0];
+
+        }
 
     }
 

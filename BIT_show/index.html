@@ -12,32 +12,44 @@
 </head>
 
 <body>
-    <nav class="navbar text-white bg-dark">
-        <div class="row" id="nav-row">
-            <div class="col-2 offset-2">
-                <h3>BITShow</h3>
+
+        <nav class="navbar text-white bg-dark">
+            <div class="container">
+                <div class="col-md-9 pl-5">
+                    <h3>BITShow</h3>
+                </div>
+                <div class="col-md-3 ">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box" list="serch_list">
+                        <datalist id="serch_list"></datalist>
+                    </form>
+                </div>
             </div>
-            <div class="col-2 offset-4">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
-                </form>
-            </div>
+        </nav>
+    
+
+
+    <div class="container-fluid" id="movie_container">
+
+        <div class="container">
+            <h1 class="mt-3">Popular Shows</h1>
         </div>
-    </nav>
-    <div class="row" id="movie_container">
 
     </div>
 
 
 
-
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+ 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
     <script src="./js/dataModule.js"></script>
     <script src="./js/UIModule.js"></script>
     <script src="./js/mainModule.js"></script>
+    <script>
+        mainModule.init();
+
+    </script>
 </body>
 
 </html>

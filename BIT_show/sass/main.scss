@@ -1,9 +1,27 @@
-#nav-row {
-    width: 100%;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-#movie_container {
-    padding: 5% 10%;
-    margin: 0 auto;
-    width: 80%;
+
+
+.col-3 {
+    float: right;
 }
+
+h1 {
+    text-align: center;
+}
+
+#movie_container .container div {
+    float: left;
+    text-align: center;
+    
+}
+
+#movie_container .container div a {
+    display: block;
+    margin-top: 10px;
+   
+}
+

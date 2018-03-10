@@ -1,67 +1,99 @@
 const mainModule = (function (dataModule, UIModule) {
 
-    var tvShows = new dataModule.TvShows();
 
-    let request = $.ajax({
-        url: 'http://api.tvmaze.com/shows',
-        method: 'GET'
+    function init() {
 
-    })
+        var tvShows;
 
-    request.done(function (msg) {
-        let firsFifty = msg.slice(0, 50);
-        firsFifty.forEach(element => {
-            let show = new dataModule.Show(element.name, element.image.medium, element.id, element.summary);
-            tvShows.addShow(show);
-        });
-        UIModule.makeListOfMovies(tvShows.showsList);
-    })
+        let request = $.ajax({
 
+            url: 'http://api.tvmaze.com/shows',
+            method: 'GET'
 
+        })
+
+        request.done(function (msg) {
+            let firsFifty = msg.slice(0, 50);
+            tvShows = new dataModule.TvShows();
+            firsFifty.forEach(element => {
+                let show = new dataModule.Show(element.name, element.image.medium, element.id, element.summary);
+
+                tvShows.addShow(show);
+            });
+
+            UIModule.makeListOfMovies(tvShows.showsList)
+        })
+
+        // search box
+
+        $('#search-box').keyup(function (event){
+            let value = (this).value;
+          
+            let request = $.ajax({
+                url: `http://api.tvmaze.com/search/shows?q=${value}`,
+                method: 'GET'
     
+            })
     
-    $(document).on('click', 'a', function (event) {
-     
-     const clickedId = $(this).attr('id');
-     var clickedShow;
-     
-     for (let i = 0; i < tvShows.showsList.length; i++) {
-         if(tvShows.showsList[i].id == clickedId) {
-             clickedShow = tvShows.showsList[i];
+            request.done(function (msg) {
+                msg.forEach(element => {
+                    let movieName = element.show.name;
+                    let id = element.show.id;
+                    UIModule.makeSearchList(movieName, id);
+                })
+            })
+
+        })
+
+        $('#search-box').change(function(event){
+            id = this.value;
+            window.location.href = `showInfoPage.html#${id}`
+        })
+
+    }
+
+
+
+    function initSinglePage() {
+
+        let id = window.location.hash.slice(1);
+
+        let request = $.ajax({
+
+            url: `http://api.tvmaze.com/shows/${id}`,
+            method: 'GET',
+            data: {
+                embed: ['seasons', 'cast']
             }
-        }
-        
-        let seasonRequest = $.ajax({
-            url: `https://api.tvmaze.com/shows/${clickedId}/seasons`,
-            method: 'GET'
+
         })
-        
-        seasonRequest.done(function(resSeasons){
-            
-            resSeasons.forEach((element) => {
-                var season = new dataModule.Season(element.premiereDate, element.endDate);
-                clickedShow.addSeason(season);
-            })
-        });
-        
-        let castRequest = $.ajax({
-            url: `https://api.tvmaze.com/shows/${clickedId}/cast`,
-            method: 'GET'
+        let show;
+        request.done(function (msg) {
+          
+            show = new dataModule.Show(msg.name, msg.image.original, msg.id, msg.summary);
+
+           msg._embedded.seasons.forEach((element) => {
+
+                season = new dataModule.Season(element.premiereDate, element.endDate);
+                show.addSeason(season);
+           })
+
+           msg._embedded.cast.forEach((element) => {
+
+                cast = new dataModule.Cast(element.person.name);
+                show.addCast(cast);
+           })
+           
+           UIModule.makeOneMovie(show);
+
         })
-        
-        castRequest.done(function(resCast){
-            
-            resCast.forEach((element) => {
-                var cast = new dataModule.Cast(element.person.name);
-                clickedShow.addCast(cast);
-            })
-        });
-        
-        UIModule.showMovieInfo(clickedShow);
-        console.log(clickedShow);
-        
-      //  window.location.href = 'showinfoPage.html';
-    });
-    
+
+
+    }
+
+    return {
+        init: init,
+        initSinglePage: initSinglePage
+    }
 
 })(dataModule, UIModule);
