@@ -1,27 +1,22 @@
-body {
-    margin: 0;
-    padding: 0;
-}
 
-
-
-.col-3 {
-    float: right;
-}
-
-h1 {
+h1, h3 {
     text-align: center;
+
+}
+.row, .img {
+     width: 100%;
+ }
+
+ form {
+     float:left;
+ }
+
+#movie_container, #one_show {
+    margin: 0 auto;
+    width: 70%;
 }
 
-#movie_container .container div {
-    float: left;
-    text-align: center;
-    
+.optionStyle {
+    width: 190px;
+    border-bottom: 1px solid gray
 }
-
-#movie_container .container div a {
-    display: block;
-    margin-top: 10px;
-   
-}
-

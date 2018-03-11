@@ -1,19 +1,21 @@
-body {
-  margin: 0;
-  padding: 0; }
-
-.col-3 {
-  float: right; }
-
-h1 {
+h1, h3 {
   text-align: center; }
 
-#movie_container .container div {
-  float: left;
-  text-align: center; }
+.row {
+  width: 100%; }
 
-#movie_container .container div a {
-  display: block;
-  margin-top: 10px; }
+form {
+  float: left; }
+
+.img {
+  width: 100%; }
+
+#movie_container, #one_show {
+  margin: 0 auto;
+  width: 70%; }
+
+.optionStyle {
+  width: 190px;
+  border-bottom: 1px solid gray; }
 
 /*# sourceMappingURL=main.css.map */

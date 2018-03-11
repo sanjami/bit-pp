@@ -16,6 +16,20 @@ const dataModule = (function(){
         }
     }
 
+    class AKA {
+        
+        constructor(country, name) {
+            this.country = country;
+            this.name = name;
+        }
+    }
+
+    class Crew {
+        constructor(type, name) {
+            this.type = type;
+            this.name = name;
+        }
+    }
 
     class Show {
 
@@ -25,6 +39,8 @@ const dataModule = (function(){
             this.id = id;
             this.seasonsList = [];
             this.castsList = [];
+            this.AKAList = [];
+            this.crewList = [];
             this.details = details
         }
         addSeason(season) {
@@ -33,8 +49,12 @@ const dataModule = (function(){
         addCast(cast) {
             this.castsList.push(cast);
         }
-
-
+        addAKA(AKA) {
+            this.AKAList.push(AKA);
+        }
+        addCrew(crew) {
+            this.crewList.push(crew);
+        }
     }
 
     class TvShows {
@@ -61,6 +81,8 @@ const dataModule = (function(){
     return {
         Season: Season,
         Cast: Cast,
+        AKA: AKA,
+        Crew: Crew,
         Show: Show,
         TvShows: TvShows
     }

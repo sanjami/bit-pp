@@ -26,17 +26,19 @@ const mainModule = (function (dataModule, UIModule) {
 
         // search box
 
-        $('#search-box').keyup(function (event){
+        $('#search_box').keyup(function (event) {
             let value = (this).value;
-          
+
             let request = $.ajax({
                 url: `http://api.tvmaze.com/search/shows?q=${value}`,
                 method: 'GET'
-    
+
             })
-    
+
             request.done(function (msg) {
-                msg.forEach(element => {
+                $("#serch_list").empty();
+                tenMsg = msg.slice(0, 10);
+                tenMsg.forEach(element => {
                     let movieName = element.show.name;
                     let id = element.show.id;
                     UIModule.makeSearchList(movieName, id);
@@ -45,8 +47,10 @@ const mainModule = (function (dataModule, UIModule) {
 
         })
 
-        $('#search-box').change(function(event){
-            id = this.value;
+        $('#search_box').change(function (event) {
+            var value = $('#search_box').val();
+            var element = $(`*[value='${value}']`);
+            var id = element.attr("data-id");
             window.location.href = `showInfoPage.html#${id}`
         })
 
@@ -56,6 +60,35 @@ const mainModule = (function (dataModule, UIModule) {
 
     function initSinglePage() {
 
+        $('#search_box').keyup(function (event) {
+            let value = (this).value;
+
+            let request = $.ajax({
+                url: `http://api.tvmaze.com/search/shows?q=${value}`,
+                method: 'GET'
+
+            })
+
+            request.done(function (msg) {
+                $("#serch_list").empty();
+                tenMsg = msg.slice(0, 10);
+                tenMsg.forEach(element => {
+                    let movieName = element.show.name;
+                    let id = element.show.id;
+                    UIModule.makeSearchList(movieName, id);
+                })
+            })
+
+        })
+
+        $('#search_box').change(function (event) {
+            var value = $('#search_box').val();
+            var element = $(`*[value='${value}']`);
+            var id = element.attr("data-id");
+            window.location.href = `showInfoPage.html#${id}`
+            location.reload();
+        })
+
         let id = window.location.hash.slice(1);
 
         let request = $.ajax({
@@ -63,31 +96,38 @@ const mainModule = (function (dataModule, UIModule) {
             url: `http://api.tvmaze.com/shows/${id}`,
             method: 'GET',
             data: {
-                embed: ['seasons', 'cast']
+                embed: ['seasons', 'cast', 'crew', 'akas']
             }
 
         })
         let show;
         request.done(function (msg) {
-          
+console.log(msg);
             show = new dataModule.Show(msg.name, msg.image.original, msg.id, msg.summary);
 
-           msg._embedded.seasons.forEach((element) => {
-
+            msg._embedded.seasons.forEach((element) => {
                 season = new dataModule.Season(element.premiereDate, element.endDate);
                 show.addSeason(season);
-           })
+            })
 
-           msg._embedded.cast.forEach((element) => {
-
+            msg._embedded.cast.forEach((element) => {
                 cast = new dataModule.Cast(element.person.name);
                 show.addCast(cast);
-           })
-           
-           UIModule.makeOneMovie(show);
+            })
+
+            msg._embedded.akas.forEach((element) => {
+                AKA = new dataModule.AKA(element.country.name, element.name);
+                show.addAKA(AKA);
+            })
+
+            msg._embedded.crew.forEach((element) => {
+                crew = new dataModule.Crew(element.type, element.person.name);
+                show.addCrew(crew);
+            })
+console.log(show);
+            UIModule.makeOneMovie(show);
 
         })
-
 
     }
 
